@@ -26,8 +26,8 @@ Route::middleware([
     })->name('dashboard');
 });
 
-Route::get('/redirect',[HomeController::class,'redirect']);
 Route::get('/',[HomeController::class,'index'])->name('homepage');
+Route::get('/redirect',[HomeController::class,'redirect']);
 Route::get('/product',[AdminController::class,'product']);
 Route::post('/uploadproduct',[AdminController::class,'uploadproduct']);
 Route::get('/showproduct',[AdminController::class,'showproduct']);
