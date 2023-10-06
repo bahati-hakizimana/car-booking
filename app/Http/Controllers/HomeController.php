@@ -20,9 +20,6 @@ class HomeController extends Controller
             $data=product::paginate(6);
             return view('user.home', compact('data'));
         }
-        
-            
-        
     }
 
 
