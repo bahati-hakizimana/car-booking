@@ -209,7 +209,7 @@ header {
 	z-index: 99999;
 	width: 100%;
 	height: 80px;
-	background-color: #232323;
+	background-color: #fff!important;
 	-webkit-transition: all 0.3s ease-in-out 0s;
     -moz-transition: all 0.3s ease-in-out 0s;
     -o-transition: all 0.3s ease-in-out 0s;
@@ -273,7 +273,7 @@ header .navbar {
 	font-size: 15px;
 	font-weight: 500;
 	letter-spacing: 0.5px;
-	color: #fff;
+	color: #232323;
 	transition: all 0.5s;
 	margin-top: 5px;
 }
@@ -282,7 +282,7 @@ header .navbar {
 .navbar .navbar-nav .nav-link.active,
 .navbar .navbar-nav .nav-link.show,
 .navbar .navbar-nav .show>.nav-link {
-	color: #fff;
+	color: #232323;
 	padding-bottom: 25px;
 	border-bottom: 3px solid #f33f3f;
 }
@@ -318,7 +318,7 @@ header .navbar {
 
 .banner-item-01 {
 	padding: 300px 0px;
-	background-image: url(../images/p2.jpg);
+	background-image: url(../images/p8.avif);
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: center center;
@@ -326,7 +326,7 @@ header .navbar {
 
 .banner-item-02 {
 	padding: 300px 0px;
-	background-image: url(../images/p8.avif);
+	background-image: url(../images/p3.jpg);
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: center center;
@@ -399,8 +399,6 @@ header .navbar {
     opacity: 1;
 }
 
-
-
 /* Latest Produtcs */
 
 .latest-products {
@@ -419,6 +417,7 @@ header .navbar {
 .product-item {
 	border: 1px solid #eee;
 	margin-bottom: 30px;
+	
 }
 
 .product-item .down-content {

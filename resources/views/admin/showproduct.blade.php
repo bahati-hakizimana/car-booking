@@ -6,15 +6,15 @@
     {{-- css --}}
     @include('admin.css')
   </head>
-  <body>
+  <body class="bg-white">
     {{-- sidebar --}}
 
     @include('admin.sidebar')
       <!-- Navbar -->
       @include('admin.navbar')
       
-      <div class="container-fluid page-body-wrapper mt-3">
-        <div class="container" align="center">
+      <div class="container-fluid page-body-wrapper mt-3 bg-white">
+        <div class="container " align="center">
             @if(session()->has('message'))
                 <div class="alert alert-success">
                  <button type="button" class="close" data-dismiss="alert">x</button>
@@ -22,11 +22,12 @@
                 </div>
                 
                 @endif
-            <div class="row ">
+                <a href="{{ url("product") }}" class="btn btn-success">Add Product</a>
+            <div class="row mt-2">
                 <div class="col-12 grid-margin">
-                  <div class="card">
+                  <div class="card shadow" style="background: white;">
                     <div class="card-body">
-                      <h4 class="card-title">Show All Products</h4>
+                      <h4 class="card-title ">Show All Products</h4>
                       <div class="table-responsive">
                         <table class="table">
                           
@@ -35,7 +36,10 @@
                               <th>Name</th>
                               <th>Description </th>
                               <th>Price </th>
+                              <th>Plate Number </th>
+                              <th>Total Seats </th>
                               <th>Image </th>
+                              <th>Inner Image </th>
                               <th>Actions </th>
                             </tr>
                           
@@ -46,7 +50,10 @@
                               <td>{{$product->name}}</td>
                               <td>{{$product->description}}</td>
                               <td>{{$product->price}}</td>
+                              <td>{{$product->plate_number}}</td>
+                              <td>{{$product->total_seating}}</td>
                               <td><img height="100px" width="100px" src="/productimage/{{$product->image}}" alt=""></td>
+                              <td><img height="100px" width="100px" src="/productinner_image/{{$product->inner_image}}" alt="innaimage"></td>
                               <td>
                                 <a class="btn btn-success" href="{{url('updateproduct',$product->id)}}">Update</a>
                                 <a class="btn btn-danger" href="{{ url('deleteproduct',$product->id) }}">Delete</a>
@@ -56,6 +63,13 @@
                               
                             </tr>
                             @endforeach
+                            @if(method_exists($data,'links'))
+
+                            <div class="d-flex justify-content-center">
+                              {!! $data->links() !!}
+                            </div>
+                      
+                            @endif
                            
                         </table>
                       </div>

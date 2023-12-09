@@ -1,0 +1,194 @@
+
+.logo{
+  width: 200px;
+  height: 50px;
+}
+
+.collapse{
+  visibility: visible !important;
+}
+.about{
+  font-weight: 400;
+  font-size: medium;
+  color: black;
+}
+.product-item
+{
+  margin-left: 2rem;
+}
+.read-more-container{
+display: flex;
+color: #111;
+margin-left: 8rem;
+}
+
+.container-para{
+display: flex;
+flex-direction: column
+justify-content: center;
+align-items: canter;
+padding: 2rem;
+background-color: #fff;
+border-radius: 2px;
+line-height: 1.4rem;
+box-shadow: 0 0 1rem rgba(0,0,0,.1);
+width: 100%;
+}
+
+
+.read-more-text--show{
+display: inline;
+}
+
+label {
+float: left;
+font-weight: bold;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="number"],
+input[type="text"],
+textarea {
+width: 100%;
+padding: 10px;
+border: 1px solid #ccc;
+border-radius: 4px;
+font-size: 16px;
+}
+
+textarea {
+resize: vertical;
+}
+.contact-form h2 {
+text-align: center;
+margin-bottom: 20px;
+margin-left: 20px;
+}
+.contact-form
+{
+margin-left: 4rem;
+}
+
+.submit-button {
+display: block;
+width: 100%;
+padding: 10px;
+color: #fff;
+border: none;
+border-radius: 4px;
+font-size: 16px;
+cursor: pointer;
+transition: background-color 0.3s;
+}
+.form-flex
+{
+display: flex
+justify-content: center;
+gap: 2rem;
+}
+.submit-button:hover {
+background-color: #0056b3;
+}
+
+@media (max-width: 768px) {
+
+.form-group {
+  margin-bottom: 10px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="text"],
+textarea {
+  width: 100%;
+}
+}
+
+.form-area {
+	padding-top: 7%;
+}
+.row.single-form {
+	box-shadow: 0 2px 20px -5px rgba(0,0,0,0.5);
+}
+.left {
+	background: blueviolet;
+	padding: 200px 98px;
+    height: 100%;
+}
+.left h2 {
+	font-family: poppins;
+	color: #fff;
+	font-weight: 700;
+	font-size: 48px;
+}
+.left h2 span {
+	font-weight: 100;
+}
+.single-form{
+    background: #fff;
+}
+.right {
+	padding: 70px 100px;
+	position: relative;
+}
+.right i {
+	position: absolute;
+	font-size: 80px;
+	left: -27px;
+	top: 40%;
+	color: #fff;
+}
+.form-control {
+	border: 2px solid #000;
+}
+.right button {
+	border: none;
+	border-radius: 0;
+	background: #252525;
+	width: 180px;
+	color: #fff;
+	padding: 15px 0;
+	display: inline-block;
+	font-size: 16px;
+	margin-top: 20px;
+	cursor: pointer;
+}
+.right button:hover{
+    background-color: #252525;
+}
+
+
+/*responsive*/
+
+@media (min-width:768px) and (max-width:991px){
+    .right i {
+	top: -52px;
+	transform: rotate(90deg);
+	left: 50%;
+}
+}
+
+@media (max-width:767px){
+    .left {
+  padding: 90px 15px;
+  text-align: center;
+}
+.left h2 {
+  font-size: 25px;
+}
+.right {
+  padding: 25px;
+}
+.right i {
+  top: -52px;
+  transform: rotate(90deg);
+  left: 46%;
+}
+    .right button {
+	width: 150px;
+	padding: 12px 0;
+}
+    
+}
