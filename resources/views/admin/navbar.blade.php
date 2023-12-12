@@ -1,4 +1,4 @@
-<div class="container-fluid page-body-wrapper">
+<div class="container-fluid page-body-wrapper bg-gray-300">
     <!-- partial:partials/_navbar.html -->
     <nav class="navbar p-0 fixed-top d-flex flex-row">
       <div class="navbar-brand-wrapper d-flex d-lg-none align-items-center justify-content-center">
