@@ -65,6 +65,83 @@
 .read-more-text--show{
     display: inline;
 }
+section.footer {
+  background-color: #21d4fd;
+ 
+  position: relative;
+  font-family: "Poppins";
+  padding: 25px 0px;
+}
+.footer__content {
+  padding: 25px;
+  text-align: center;
+  color: #fff;
+  
+}
+.footer__content img {
+  width: 5%;
+  position: absolute;
+  top: -50px;
+  border: 1px solid red;
+}
+.footer__heading {
+  position: relative;
+}
+
+.footer__heading::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 45%;
+  height: 5px;
+  margin: 0;
+  border-radius: 50px;
+  width: 20%;
+  transform: translate(-50%, -50%);
+  /* background-color: rgb(255, 255, 255); */
+}
+.footer__content p {
+  font-size: 12px;
+  font-weight: 100;
+  padding: 10px 0px;
+}
+ul.social__media {
+  margin: 0;
+  padding: 0;
+  display: inline-block;
+  margin-top: 15px;
+}
+ul.social__media li {
+  list-style-type: none;
+  display: inline-block;
+  margin-right: 15px;
+}
+ul.social__media li a {
+  color: #000;
+  font-size: 20px;
+}
+ul.social__media li {
+  text-align: center;
+  height: 45px;
+  width: 45px;
+  border-radius: 50px;
+  background-color: #fff;
+  line-height: 40px;
+  border: 2px solid #545d5d;
+  box-shadow: 0px 1px #fff;
+  box-shadow: 0 2px 10px -1px rgba(0, 0, 0, 0.55),
+    0 0px 20px 0px rgba(0, 0, 0, 0.55);
+}
+ 
+ul.bus__list {
+  padding: 0;
+  margin: 0;
+}
+ 
+ul.bus__list li {
+  list-style-type: none;
+  margin-bottom: 5px;
+}
    </style>
 
   </head>
@@ -138,37 +215,16 @@
      
     </header>
 
-    <!-- Page Content -->
+    
     <!-- Banner Starts Here -->
-    <div class="banner header-text">
-        <div class="owl-banner owl-carousel">
-          <div class="banner-item-01">
-            <div class="text-content">
-              <h4>Best Offer</h4>
-              <h2>New Arrivals On Sale</h2>
-            </div>
-          </div>
-          <div class="banner-item-02">
-            <div class="text-content">
-              <h4>Flash Deals</h4>
-              <h2>Get your best products</h2>
-            </div>
-          </div>
-          <div class="banner-item-03">
-            <div class="text-content">
-              <h4>Last Minute</h4>
-              <h2>Grab last minute deals</h2>
-            </div>
-          </div>
-        </div>
+    <div class="banner header-text mb-3">
+       
       </div>
     
-    <!-- Banner Ends Here -->
-    {{-- @include('user.product') --}}
-    {{-- <div class="container mt-8"> --}}
-        <div class="row">
+  
+        <div class="row mt-3">
             <div class="col-md-12">
-                <h4 class="text-center mt-4" style="font-size: 500; font-wait:bold;">Read More About Empower Africa Car Rental</h4>
+                <h5 class="text-center mt-4" style="font-size: 500; font-wait:bold;">Read More About Empower Africa Car Rental</h5>
                 <div class="inner-content text-center mt-4 d-flex">
                    
                     <div class="product-item shadow" style="margin-right: 2rem;">
@@ -227,19 +283,24 @@
    
    
       </div>
-      <footer class="bg-dark mt-4">
-        <div class="container">
-          <div class="row">
-            <div class="col-md-12">
-              <div class="inner-content">
-                <p class="text-light">Copyright &copy; 2023 Empower Africa Now.
-              
-              car: <a rel="nofollow noopener" href="#" target="_blank">booking</a></p>
-              </div>
+      <section class="footer bg-dark mt-3">
+        <div class="container bg-dark shadow">
+          <div class="footer__content bg-dark">
+            <div class="footer__heading">
+              <h4 class="text-light">get us through our socialmedia</h4>
             </div>
+            <p class="mb-0 text-light">copylight © 2023 EmpowerAfrica Now Ltd</p>
+       
+            <ul class="social__media">
+              <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+              <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+              <li><a href="#"><i class="fa fa-youtube" aria-hidden="true"></i></a></li>
+              <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+              <li><a href="#"><i class="fa fa-telegram" aria-hidden="true"></i></a></li>
+            </ul>
           </div>
         </div>
-      </footer>
+      </section>
   
   
     <!-- Bootstrap core JavaScript -->

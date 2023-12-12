@@ -367,10 +367,10 @@ public function confirmbookings(Request $request)
                 $payment->kind = $cashin['kind'];
                 $payment->created_at = $cashin['created_at'];
 
-                dd($request->all());
+                // dd($request->all());
                 
                 $payment->save();
-
+          
 
                 $booking->payment_id = $payment->id;
 

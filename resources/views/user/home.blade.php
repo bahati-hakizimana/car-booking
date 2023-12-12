@@ -13,6 +13,13 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+{{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" 
+integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" 
+crossorigin="anonymous" referrerpolicy="no-referrer" /> --}}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha384-rm7LJ1lC8CS9ZquFjJSKZlXvIpjmP5QSmV2P93aLlIwI69vwvc1k2t+CFwDlPgqP" crossorigin="anonymous">
+
+
+
 
     <title>Empower Africa Car Booking</title>
 
@@ -135,7 +142,9 @@ ul.bus__list li {
   list-style-type: none;
   margin-bottom: 5px;
 }
-
+.left-content .featured-list li{
+  list-style: none;
+}
    </style>
 
   </head>
@@ -217,31 +226,42 @@ ul.bus__list li {
     <!-- Page Content -->
     <!-- Banner Starts Here -->
     <div class="banner header-text">
-      {{-- <div class="owl-banner owl-carousel">
-        <div class="banner-item-01">
-          <div class="text-content">
-            <h4>Best Offer</h4>
-            <h2>New Arrivals On Sale</h2>
-          </div>
-        </div>
-        <div class="banner-item-02">
-          <div class="text-content">
-            <h4>Flash Deals</h4>
-            <h2>Get your best products</h2>
-          </div>
-        </div>
-        <div class="banner-item-03">
-          <div class="text-content">
-            <h4>Last Minute</h4>
-            <h2>Grab last minute deals</h2>
-          </div>
-        </div>
-      </div> --}}
     </div>
     <!-- Banner Ends Here -->
     @include('user.product')
+    <div class="best-features">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="section-heading">
+              <h4 class="text-center">Vist Our Office In Kigali</h4>
+            </div>
+          </div>
+          <div class="col-md-6 mt-4">
+            <div class="left-content">
+              
+              <ul class="featured-list">
+                
+                <li><a href="#"><i class="fa fa-phone" aria-hidden="true"></i>  </a>+250780045364</li>
+                <li><a href="#"><i class="fa fa-phone" aria-hidden="true"></i>  </a>+250 788 908 950</li>
+                <li><a href="#"><i class="fa fa-envelope" aria-hidden="true"></i> </a>info@empowerafricanow.com</li>
+                <li><a href="#"><i class="fa fa-envelope" aria-hidden="true"></i> </a>hyper100@gmail.com</li>
+                <li><a href="#"><i class="fa fa-whatsapp" aria-hidden="true"></i> </a>+1 (403) 473-1358</li>
+                
+              </ul>
+              
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="right-image" id="map" style="height: 400px;">
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     
-    <section class="footer bg-dark">
+    <section class="footer bg-dark mt-3">
       <div class="container bg-dark shadow">
         <div class="footer__content bg-dark">
           <div class="footer__heading">
@@ -284,7 +304,25 @@ ul.bus__list li {
           }
       }
     </script>
+    {{-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCNGNf-_xZtojxLuBctw3sGOw6bWT4Lvsc&callback=initMap" 
+    async defer></script> --}}
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCNGNf-_xZtojxLuBctw3sGOw6bWT4Lvsc&callback=initMap" async defer></script>
+    <script>
+      function initMap() {
+          var kicukiroCenter = { lat: -1.98035, lng: 30.10775 };
+          var map = new google.maps.Map(document.getElementById('map'), {
+              center: kicukiroCenter,
+              zoom: 12  
+          });
+          var marker = new google.maps.Marker({
+              position: kicukiroCenter,
+              map: map,
+              title: 'Kicukiro, Kigali'
+          });
+      }
+  </script>
 
+    
 
 
 

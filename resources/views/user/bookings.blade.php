@@ -261,9 +261,17 @@
                                 </div>
                                 <div class="mb-3 mt-3">
                                     <label for="deposit" class="form-label">Deposite:</label>
-                                    <input type="number" class="form-control" id="deposit"
+                                    <input type="number" class="form-control" id="deposite"
                                           name="deposit"
                                         value="5" required>
+                                    <div class="valid-feedback">Valid.</div>
+                                    <div class="invalid-feedback">Please fill out this field.</div>
+                                </div>
+                                <div class="mb-3 mt-3">
+                                    <label for="deposit" class="form-label">Total Deposite:</label>
+                                    <input type="number" class="form-control" id="TotalDeposite"
+                                          name="totaldeposit"
+                                        value="" required>
                                     <div class="valid-feedback">Valid.</div>
                                     <div class="invalid-feedback">Please fill out this field.</div>
                                 </div>
@@ -378,7 +386,7 @@
                             </select>
                             <label for="payment_method" class="form-label">Payment Method:</label>
                             </div>
-                            <button type="submit" class="btn btn-dark" style="width: 100%" onclick="calculateTotalPrice()">Book Now</button>
+                            <button type="submit" class="btn btn-danger" style="width: 100%" onclick="calculateTotalPrice()">Book Now</button>
                         </form>
 
                        

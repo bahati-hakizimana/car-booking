@@ -222,7 +222,7 @@
                     <div class="form-group mt-3" hidden="">
                         <label>Deposite(cotion) Rwf/Car</label>
                         <input style="width: 600px;border: none;border-bottom: 1px solid gray;" type="number"
-                            name="deposit" id="deposite" class="form-control" value="5" required>
+                            name="deposit" id="deposite" class="form-control" value="25000" required>
                     </div>
                     <div class="form-group mt-3">
                         <label>Total Deposite</label>
@@ -249,7 +249,7 @@
                 </div>
                 <div id="mobilemoneyFields" class=" mt-3" style="display: none;">
                     <label for="paypackNumber" class="form-label">Mtn/airtel/tigo:</label>
-                    <input type="number" class="form-control" id="paypackNumber" placeholder="Enter your Mtn or aitel tigo number" name="payment" />
+                    <input type="number" class="form-control" id="paypackNumber" placeholder="Enter your Mtn or aitel tigo number" name="payment" style="width: 600px;border: none;border-bottom: 1px solid gray;" />
                     <div class="valid-feedback">Valid.</div>
                     <div class="invalid-feedback">Please fill out this field.</div>
                 </div>
@@ -394,81 +394,7 @@
         
     </script>
 
-{{-- <script>
-    function toggleMobilemoneyField() {
-        var mobilemoneyFields = document.getElementById('mobilemoneyFields');
-        var paymentMethod = document.getElementById('payment_method').value;
-  
-        // Show/hide paypackFields based on payment method selection
-        if (paymentMethod === 'paypack') {
-            mobilemoneyFields.style.display = 'block';
-        } else {
-            mobilemoneyFields.style.display = 'none';
-        }
-    }
-    const mobileMoneyInput = document.getElementsByName("mobilemoney")[0];
 
-  if (mobileMoneyInput && !mobileMoneyInput.disabled) {
-    mobileMoneyInput.focus();
-  }
-  
-    function updateTotalPrice() {
-      let pricePerDay = parseFloat(document.getElementById('price').value) || 0;
-  
-      // Parse pickup and dropoff dates
-      let pickupDate = new Date(document.getElementById('pickupDate').value);
-      let dropoffDate = new Date(document.getElementById('dropoffDate').value);
-  
-      // Calculate total days
-      let oneDay = 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
-      let totalDays = Math.round(Math.abs((pickupDate - dropoffDate) / oneDay)) || 1;
-  
-      // Additional fees
-      let additionalFees = 0;
-  
-      // Add 10k if airport is selected
-      if (document.getElementById('selAirport').value === 'yes') {
-        additionalFees += 5000;
-      }
-  
-      // Add 10k if driver is selected
-      if (document.getElementById('selDriver').value === 'yes') {
-        additionalFees += 10000;
-      }
-  
-      // Add 5k if destination is 'east'
-      if (document.getElementById('selDestination').value === 'east') {
-        additionalFees += 5000;
-      }
-      if (document.getElementById('selDestination').value === 'west') {
-        additionalFees += 5000;
-      }
-      if (document.getElementById('selDestination').value === 'north') {
-        additionalFees += 5000;
-      }
-  
-      // Calculate total price
-      let totalPrice = (pricePerDay + additionalFees) * totalDays;
-  
-      // Update total days and total price fields
-      document.getElementById('totalDays').value = totalDays;
-      document.getElementById('totalPrice').value = totalPrice.toFixed(2);
-    }
-  
-    // Attach the function to form inputs' change events
-    document.getElementById('selAirport').addEventListener('change', updateTotalPrice);
-    document.getElementById('selDriver').addEventListener('change', updateTotalPrice);
-    document.getElementById('selDestination').addEventListener('change', updateTotalPrice);
-    document.getElementById('price').addEventListener('input', updateTotalPrice);
-    document.getElementById('pickupDate').addEventListener('change', updateTotalPrice);
-    document.getElementById('dropoffDate').addEventListener('change', updateTotalPrice);
-  
-    // Initial update
-    updateTotalPrice();
-  
-  
-  
-  </script> --}}
 <script>
     function togglePaymentField() {
       var mobileFields = document.getElementById('mobilemoneyFields');
