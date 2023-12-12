@@ -1,6 +1,6 @@
 <div class="container-scroller">
     <!-- partial:partials/_sidebar.html -->
-    <nav class="sidebar sidebar-offcanvas bg-gray-300 shadow" id="sidebar">
+    <nav class="sidebar sidebar-offcanvas shadow" id="sidebar">
       <div class="sidebar-brand-wrapper d-none d-lg-flex align-items-center justify-content-center fixed-top">
         <a class="sidebar-brand brand-logo" href="{{url('redirect')}}"><img src="assets/images/Empower.png" alt="logo" /></a>
         <a class="sidebar-brand brand-logo-mini" href="{{url('redirect')}}"><img width="50" height="50" src="assets/images/Empower.png" alt="logo" /></a>
