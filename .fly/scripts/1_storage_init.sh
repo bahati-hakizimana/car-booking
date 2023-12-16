@@ -5,3 +5,5 @@ if [ ! -d "$FOLDER" ]; then
     echo "deleting storage_..."
     rm -rf /var/www/html/storage_
 fi
+
+/usr/bin/php /var/www/html/artisan storage:link
