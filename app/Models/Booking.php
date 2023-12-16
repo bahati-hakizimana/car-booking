@@ -39,7 +39,7 @@ class Booking extends Model
 
     public function payment()
     {
-        return $this->hasOne(Payment::class);
+        return $this->hasOne(payment::class);
     }
 
     public function user()
@@ -49,6 +49,6 @@ class Booking extends Model
 
     public function driver()
     {
-        return $this->belongsTo(Driver::class);
+        return $this->belongsTo(driver::class);
     }
 }
