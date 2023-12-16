@@ -19,7 +19,7 @@ class AdminController extends Controller
   /// show All product from database
   public function showproduct()
   {
-    $data = product::paginate(2);
+    $data = product::paginate(10);
     return view('admin.showproduct', compact('data'));
   }
 
@@ -127,7 +127,7 @@ class AdminController extends Controller
 
   public function booking()
   {
-    $data = Booking::paginate(4);
+    $data = Booking::paginate(10);
     return view('admin.booking', compact('data'));
   }
   public function cart(Request $request)
@@ -141,7 +141,7 @@ class AdminController extends Controller
 
   public function messages()
   {
-    $data = contact::paginate(3);
+    $data = contact::paginate(10);
     return view('admin.message', compact('data'));
   }
   public function customer()
@@ -149,7 +149,7 @@ class AdminController extends Controller
   }
   public function payment(Request $request)
   {
-    $data = Payment::paginate(3);
+    $data = Payment::paginate(10);
     return view('admin.payment', compact('data'));
   }
   public function showdetails($id)
