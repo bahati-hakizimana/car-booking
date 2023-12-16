@@ -127,7 +127,7 @@
                         <!-- The slideshow/carousel -->
                         <div class="carousel-inner">
                             <div class="carousel-item active">
-                                <img src="/productimage/{{ $product->image }}" alt="image" class="card-img-top">
+                                <img src="/storage/products/{{ $product->image }}" alt="image" class="card-img-top">
                             </div>
                             <div class="carousel-item">
                                 <img src="/productinner_image/{{ $product->inner_image }}" alt="image" class="card-img-top">

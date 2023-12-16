@@ -52,8 +52,8 @@
                               <td>{{$product->price}}</td>
                               <td>{{$product->plate_number}}</td>
                               <td>{{$product->total_seating}}</td>
-                              <td><img height="100px" width="100px" src="/productimage/{{$product->image}}" alt=""></td>
-                              <td><img height="100px" width="100px" src="/productinner_image/{{$product->inner_image}}" alt="innaimage"></td>
+                              <td><img height="100px" width="100px" src="/storage/products/{{$product->image}}" alt=""></td>
+                              <td><img height="100px" width="100px" src="/storage/products/{{$product->inner_image}}" alt="innaimage"></td>
                               <td>
                                 <a class="btn btn-success" href="{{url('updateproduct',$product->id)}}">Update</a>
                                 <a class="btn btn-danger" href="{{ url('deleteproduct',$product->id) }}">Delete</a>

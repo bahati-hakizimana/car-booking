@@ -18,7 +18,7 @@
       @foreach($data as $product)
       <div class="col-md-4">
         <div class="product-item shadow">
-          <a class="product"  href="{{url('bookings',$product->id)}}"><img width="150" height="300"  src="/productimage/{{$product->image}}" alt=""></a>
+          <a class="product"  href="{{url('bookings',$product->id)}}"><img width="150" height="300"  src="/storage/products/{{$product->image}}" alt=""></a>
           <div class="down-content">
             <a href="#"><h4>{{$product->name}}</h4></a>
             <h6>${{$product->price}}-day</h6>

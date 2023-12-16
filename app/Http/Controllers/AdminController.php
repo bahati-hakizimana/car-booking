@@ -43,8 +43,8 @@ class AdminController extends Controller
       $inner_imagename = uniqid() . '.' . $inner_image->getClientOriginalExtension();
 
       // Store the file in the 'productimage' directory
-      $image->move('productimage', $imagename);
-      $inner_image->move('productinner_image', $inner_imagename);
+      $image->move('storage/products', $imagename);
+      $inner_image->move('storage/products', $inner_imagename);
 
       $data->image = $imagename;
       $data->inner_image = $inner_imagename;
