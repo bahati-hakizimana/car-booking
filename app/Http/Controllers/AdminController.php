@@ -149,13 +149,13 @@ class AdminController extends Controller
   }
   public function payment(Request $request)
   {
-    $data = payment::paginate(3);
+    $data = Payment::paginate(3);
     return view('admin.payment', compact('data'));
   }
   public function showdetails($id)
   {
     $booking = booking::find($id);
-    $payment = payment::find($id);
+    $payment = Payment::find($id);
     return view('admin.showdetails', compact('booking', 'payment'));
   }
 }
