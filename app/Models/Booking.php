@@ -32,4 +32,23 @@ class Booking extends Model
         'payment_id',
     ];
 
+    public function product()
+    {
+        return $this->belongsTo(Product::class);
+    }
+
+    public function payment()
+    {
+        return $this->hasOne(payment::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function driver()
+    {
+        return $this->belongsTo(driver::class);
+    }
 }

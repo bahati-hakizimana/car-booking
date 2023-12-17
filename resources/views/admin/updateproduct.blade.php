@@ -64,7 +64,7 @@
                               <div class="form-group row">
                                 <label for="productimage" class="col-sm-3 col-form-label text-dark">Old Image</label>
                                 <div class="col-sm-9">
-                                    <img height="100" width="100" src="/productimage/{{$data->image}}" alt="">
+                                    <img height="100" width="100" src="/storage/products/{{$data->image}}" alt="">
                                 </div>
                             </div>
                               <div class="form-group row">
