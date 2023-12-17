@@ -260,7 +260,7 @@
                                     <div class="invalid-feedback">Please fill out this field.</div>
                                 </div>
                                 <div class="mb-3 mt-3">
-                                    <label for="deposit" class="form-label">Deposite:</label>
+                                    <label for="deposit" class="form-element">Deposite:</label>
                                     <input type="number" class="form-control" id="deposite"
                                           name="deposit"
                                         value="5" required>
@@ -268,7 +268,7 @@
                                     <div class="invalid-feedback">Please fill out this field.</div>
                                 </div>
                                 <div class="mb-3 mt-3">
-                                    <label for="deposit" class="form-label">Total Deposite:</label>
+                                    <label for="TotalDeposit" class="form-label">Total Deposite:</label>
                                     <input type="number" class="form-control" id="TotalDeposite"
                                           name="totaldeposit"
                                         value="" required>
@@ -344,8 +344,8 @@
                                     <div class="invalid-feedback">Please fill out this field.</div>
                                 </div>
                                 <div class="mb-3 mt-3">
-                                    <label for="lastName" class="form-label">PhoneNumber:</label>
-                                    <input type="number" class="form-control" id="lastName"
+                                    <label for="phone" class="form-label">PhoneNumber:</label>
+                                    <input type="number" class="form-control" id="phone"
                                         placeholder="Enter your phone number" name="phone" required>
                                     <div class="valid-feedback">Valid.</div>
                                     <div class="invalid-feedback">Please fill out this field.</div>
