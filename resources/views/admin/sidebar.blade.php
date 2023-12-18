@@ -35,14 +35,14 @@
             <span class="menu-title">Messages</span>
           </a>
         </li>
-        <li class="nav-item menu-items">
+        {{-- <li class="nav-item menu-items">
           <a class="nav-link" href="{{route('customer')}}">
             <span class="menu-icon">
               <i class="mdi mdi-account-circle"></i>
             </span>
             <span class="menu-title">Customers</span>
           </a>
-        </li>
+        </li> --}}
         <li class="nav-item menu-items">
           <a class="nav-link" href="{{url("showproduct")}}">
             <span class="menu-icon">
