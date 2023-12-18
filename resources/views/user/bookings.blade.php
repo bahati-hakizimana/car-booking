@@ -58,7 +58,7 @@
     <header class="">
         <nav class="navbar navbar-expand-lg">
             <div class="container">
-                <a href="{{ route('homepage') }}"><img class="logo" src="/assets/images/Empower.PNG"
+                <a href="{{ route('homepage') }}"><img class="logo" src="/assets/images/Empower.png"
                         alt="logo"></a>
 
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
