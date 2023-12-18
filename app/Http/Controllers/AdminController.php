@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Support\Facades\File;
 
 use Illuminate\Http\Request;
 use App\Models\Product;
@@ -30,7 +31,9 @@ class AdminController extends Controller
   {
     $request->validate([
       'image' => 'required|image',
-      'inner_image' => 'required|inner_image',
+      // 'inner_image' => 'required|inner_image',
+      'inner_image' => 'required|image',
+
 
     ]);
 
@@ -43,11 +46,19 @@ class AdminController extends Controller
       $inner_imagename = uniqid() . '.' . $inner_image->getClientOriginalExtension();
 
       // Store the file in the 'productimage' directory
-      $image->move('storage/products', $imagename);
-      $inner_image->move('storage/products', $inner_imagename);
+      if (!File::exists('storage/productimage')) {
+        File::makeDirectory('storage/productimage', 0755, true, true);
+    }
+    
+    if (!File::exists('storage/productinner_image')) {
+        File::makeDirectory('storage/productinner_image', 0755, true, true);
+    }
+      $image->move('storage/productimage', $imagename);
+      $inner_image->move('storage/productinner_image', $inner_imagename);
+      $data->inner_image = $inner_imagename;
 
       $data->image = $imagename;
-      $data->inner_image = $inner_imagename;
+      // $data->inner_image = $inner_imagename;
 
 
 
@@ -58,7 +69,7 @@ class AdminController extends Controller
       $data->total_seating = $request->total_seating;
       $data->description = $request->des;
 
-      // dd($request->all());
+      // dd($inner_image);
 
       $data->save();
 
@@ -100,8 +111,8 @@ class AdminController extends Controller
       $inner_image = $request->file('inner_image');
       $imagename = uniqid() . '.' . $image->getClientOriginalExtension();
       $inner_imagename = uniqid() . '.' . $inner_image->getClientOriginalExtension();
-      $image->move('storage/products', $imagename);
-      $inner_image->move('storage/products', $inner_imagename);
+      $image->move('storage/productimage', $imagename);
+      $inner_image->move('storage/productinner_image', $inner_imagename);
       $data->image = $imagename;
       $data->inner_image = $inner_imagename;
     }

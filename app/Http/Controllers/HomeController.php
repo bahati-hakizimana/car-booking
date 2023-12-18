@@ -63,8 +63,8 @@ class HomeController extends Controller
 
     public function bookings(Request $request, $id)
     {
-        $product = product::find($id);
-        return view('user.bookings', compact('product'));
+        $data = product::find($id);
+        return view('user.bookings', compact('data'));
     }
     public function book(Request $request, $id)
     {

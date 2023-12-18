@@ -127,10 +127,11 @@
                         <!-- The slideshow/carousel -->
                         <div class="carousel-inner">
                             <div class="carousel-item active">
-                                <img src="/storage/products/{{ $product->image }}" alt="image" class="card-img-top">
+                                <img src="/storage/productimage/{{ $data->image }}" alt="image" class="card-img-top">
                             </div>
                             <div class="carousel-item">
-                                <img src="/productinner_image/{{ $product->inner_image }}" alt="image" class="card-img-top">
+                                <img src="/storage/productinner_image/{{$data->inner_image}}" alt="innerimage" class="card-img-top">
+                                {{-- <img  src="/storage/productinner_image/{{$data->inner_image}}" alt="innerimage"> --}}
                             </div>
                             
                         </div>
@@ -148,25 +149,25 @@
                     <div class="card-body">
                         <h5 class="card-title text-center">Car Name</h5>
                         <p class="card-text text-center">
-                            {{ $product->name }}
+                            {{ $data->name }}
                         </p>
                         <h5 class="card-title text-center">Car description</h5>
                         <p class="card-text text-center">
-                            {{ $product->description }}
+                            {{ $data->description }}
                         </p>
                         <h5 class="card-title text-center">Total Seatings</h5>
                         <p class="card-text text-center">
 
-                            {{ $product->total_seating }}
+                            {{ $data->total_seating }}
                         </p>
                         <h5 class="card-title text-center">Plate Number</h5>
                         <p class="card-text text-center">
-                            {{ $product->plate_number }}
+                            {{ $data->plate_number }}
                         </p>
                         <h5 class="card-title text-center">Car Price per Day</h5>
                         <p class="card-text text-center">
 
-                            $ {{ $product->price }}
+                            $ {{ $data->price }}
                         </p>
                         <h5 class="card-title text-center">Ca Availability Status</h5>
                         <p class="card-text text-center">
@@ -196,7 +197,7 @@
                     <div class="card-body">
                       
 
-                        <form class="form-sample" action="{{ route('book', $product->id) }}" method="POST">
+                        <form class="form-sample" action="{{ route('book', $data->id) }}" method="POST">
                           
                             @csrf
                             @method('POST')
@@ -238,7 +239,7 @@
                                 <div class="mb-3 mt-3" hidden="">
                                     <label for="productId" class="form-label">Product ID:</label>
                                     <input type="number" class="form-control" id="productId"
-                                        placeholder="Enter product ID" name="product_id" value="{{ $product->id }}"
+                                        placeholder="Enter product ID" name="product_id" value="{{ $data->id }}"
                                         required>
                                     <div class="valid-feedback">Valid.</div>
                                     <div class="invalid-feedback">Please fill out this field.</div>
@@ -255,7 +256,7 @@
                                     <label for="price" class="form-label">Price/day:</label>
                                     <input type="number" class="form-control" id="price"
                                         placeholder="Enter the price per day" name="price"
-                                        value="{{ $product->price }}" required>
+                                        value="{{ $data->price }}" required>
                                     <div class="valid-feedback">Valid.</div>
                                     <div class="invalid-feedback">Please fill out this field.</div>
                                 </div>
