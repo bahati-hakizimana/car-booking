@@ -48,6 +48,7 @@
                               <th>DropOff Date</th>
                               <th>Total_days</th>
                               <th>Total_price</th>
+                              <th>payment_method</th>
                               <th>Terms_Conditions</th>
                               <th>Action</th>
 
@@ -62,9 +63,11 @@
                               <td>{{$booking->last_name}}</td>
                               <td>{{$booking->email}}</td>
                               <td>{{$booking->phone}}</td>
-                              <td>{{$booking->address}}</td>
                               <td>{{$booking->id_passport}}</td>
-                              <td>{{$booking->product_name}}</td>
+                              <td>{{$booking->airport}}</td>
+                              <td>{{$booking->destination}}</td>
+                              <td>{{$booking->driver_status}}</td>
+                              <td>{{$booking->totaldeposit}}</td>
                               <td>{{$booking->product_id}}</td>
                               <td>{{$booking->quantity}}</td>
                               <td>{{$booking->price}}</td>
@@ -72,12 +75,11 @@
                               <td>{{$booking->dropoff_date}}</td>
                               <td>{{$booking->total_days}}</td>
                               <td>{{$booking->total_price}}</td>
-                              <td>{{$booking->driver_status}}</td>
+                              <td>{{$booking->payment_method}}</td>
                               <td>{{$booking->terms_condition}}</td>
-                              <td>{{$booking->payment_number}}</td>
                               <td>
                                 <a class="btn btn-success" href="{{url('showdetails',$booking->id)}}">show details</a>
-                                {{-- <a class="btn btn-danger" href="{{ url('deleteproduct',$product->id) }}">Delete</a> --}}
+                                <a class="btn btn-danger" href="#">Delete booking</a>
                               </td>
                             
                                 

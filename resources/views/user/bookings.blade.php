@@ -131,7 +131,7 @@
                             </div>
                             <div class="carousel-item">
                                 <img src="/storage/productinner_image/{{$data->inner_image}}" alt="innerimage" class="card-img-top">
-                                {{-- <img  src="/storage/productinner_image/{{$data->inner_image}}" alt="innerimage"> --}}
+                               
                             </div>
                             
                         </div>
@@ -264,7 +264,7 @@
                                     <label for="deposit" class="form-element">Deposite:</label>
                                     <input type="number" class="form-control" id="deposite"
                                           name="deposit"
-                                        value="5" required>
+                                        value="25000" required>
                                     <div class="valid-feedback">Valid.</div>
                                     <div class="invalid-feedback">Please fill out this field.</div>
                                 </div>
@@ -272,7 +272,7 @@
                                     <label for="TotalDeposit" class="form-label">Total Deposite:</label>
                                     <input type="number" class="form-control" id="TotalDeposite"
                                           name="totaldeposit"
-                                        value="" required>
+                                        value="25000" required>
                                     <div class="valid-feedback">Valid.</div>
                                     <div class="invalid-feedback">Please fill out this field.</div>
                                 </div>

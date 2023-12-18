@@ -222,23 +222,23 @@ ul.bus__list li {
                        <i class="fa fa-caret-left"></i>
                         <form class="contact-form" action="{{route('store.message')}}" method="POST">
                           @csrf
-                          <div class="mb-3">
+                          <div class="mb-1">
                             <label for="exampleInputEmail1" class="form-label">Your Name</label>
-                            <input type="text" class="form-control" id="name" name="name" aria-describedby="emailHelp">
+                            <input type="text" class="form-control" id="name" name="name" required>
                           </div>
-                          <div class="mb-3">
+                          <div class="mb-1">
                             <label for="exampleInputEmail1" class="form-label">Email address</label>
-                            <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp">
+                            <input type="email" class="form-control" id="email" name="email" required>
                           </div>
-                          <div class="mb-3">
+                          <div class="mb-1">
                             <label for="exampleInputEmail1" class="form-label">subject</label>
-                            <input type="text" class="form-control" id="subject" name="subject" aria-describedby="emailHelp">
+                            <input type="text" class="form-control" id="subject" name="subject" required>
                           </div>
-                          <div class="mb-3">
+                          <div class="mb-1">
                             <label for="exampleInputEmail1" class="form-label">Phone</label>
                             <input type="number" id="phone" name="phone">
                           </div>
-                          <div class="mb-3">
+                          <div class="mb-1">
                             <label for="exampleInputPassword1" class="form-label">Message</label>
                               <textarea type="text" name="message" class="form-control" id="message"></textarea>
                           </div>
