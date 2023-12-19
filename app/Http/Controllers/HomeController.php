@@ -83,6 +83,7 @@ class HomeController extends Controller
             $booking->total_price = $request->input('totalprice');
             $booking->id_passport = $request->input('id_passport');
             $booking->terms_condition = $request->input('terms_condition');
+            $booking->payment_method = $request->input('payment_method');
             $booking->driver_status = $request->input('driver_status');
             $booking->airport = $request->input('airport');
             $booking->first_name = $request->first_name;
