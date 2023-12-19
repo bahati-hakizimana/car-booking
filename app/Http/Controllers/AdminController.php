@@ -91,6 +91,12 @@ class AdminController extends Controller
     $data->delete();
     return redirect()->back()->with('message', 'product deleted successfully');
   }
+  public function deletebooking($id)
+  {
+    $data = booking::find($id);
+    $data->delete();
+    return redirect()->back()->with('message', 'booking deleted successfully');
+  }
 
   //Update Product 
 

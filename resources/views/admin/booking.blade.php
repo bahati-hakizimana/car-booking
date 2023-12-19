@@ -51,7 +51,6 @@
                               <th>Total_price</th>
                               <th>payment_method</th>
                               <th>Terms_Conditions</th>
-                              <th>Payment_Pethod</th>
                               <th>Action</th>
 
                               
@@ -80,10 +79,10 @@
                               <td>{{$booking->total_price}}</td>
                               <td>{{$booking->payment_method}}</td>
                               <td>{{$booking->terms_condition}}</td>
-                              <td>{{$booking->payment_method}}</td>
+                              
                               <td>
                                 <a class="btn btn-success" href="{{url('showdetails',$booking->id)}}">show details</a>
-                                <a class="btn btn-danger" href="#">Delete booking</a>
+                                <a class="btn btn-danger" href="{{route('deletebooking',$booking->id)}}">Delete booking</a>
                               </td>
                             
                                 
