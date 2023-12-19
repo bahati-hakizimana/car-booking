@@ -93,32 +93,32 @@
                         <div class="form-group row">
                           <label for="productname" class="col-sm-3 col-form-label text-dark">Name</label>
                           <div class="col-sm-9">
-                            <input type="text" style="border: none; border-bottom:1px solid #fff;" class="form-control text-dark bg-white" placeholder="enter Car Name" name="name"  required>
+                            <input type="text" style="border: none; border-bottom:1px solid #000;" class="form-control text-dark bg-white" placeholder="enter Car Name" name="name"  required>
                           </div>
                         </div>
                         <div class="form-group row">
                           <label for="productprice" class="col-sm-3 col-form-label text-dark">Price</label>
                           <div class="col-sm-9">
-                            <input type="number" style="border: none; border-bottom:1px solid #fff;" class="form-control text-dark bg-white" placeholder="enter Car price per day" name="price"  required>
+                            <input type="number" style="border: none; border-bottom:1px solid #000;" class="form-control text-dark bg-white" placeholder="enter Car price per day" name="price"  required>
                           </div>
                         </div>
                         <div class="form-group row">
                           <label for="productprice" class="col-sm-3 col-form-label text-dark">Plate Number</label>
                           <div class="col-sm-9">
-                            <input type="text" style="border: none; border-bottom:1px solid #fff;" class="form-control text-dark bg-white" placeholder="enter Car plate number" name="plate_number"  required>
+                            <input type="text" style="border: none; border-bottom:1px solid #000;" class="form-control text-dark bg-white" placeholder="enter Car plate number" name="plate_number"  required>
                           </div>
                         </div>
                         <div class="form-group row">
                           <label for="productprice" class="col-sm-3 col-form-label text-dark">Total Seatings</label>
                           <div class="col-sm-9">
-                            <input type="number" style="border: none; border-bottom:1px solid #fff;" class="form-control text-dark bg-white" placeholder="enter Car Total seatings" name="total_seating" required>
+                            <input type="number" style="border: none; border-bottom:1px solid #000;" class="form-control text-dark bg-white" placeholder="enter Car Total seatings" name="total_seating" required>
                           </div>
                         </div>
                         
                         <div class="form-group row">
                           <label for="productdescription" class="col-sm-3 col-form-label text-dark">Desc</label>
                           <div class="col-sm-9">
-                            <input type="text" style="border: none; border-bottom:1px solid #fff;" class="form-control text-dark bg-white" placeholder="enter Car Description" name="desc"  required>
+                            <input type="text" style="border: none; border-bottom:1px solid #000;" class="form-control text-dark bg-white" placeholder="enter Car Description" name="desc"  required>
                           </div>
                       </div>
                         
