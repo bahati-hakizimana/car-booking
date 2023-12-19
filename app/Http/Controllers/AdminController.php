@@ -144,7 +144,7 @@ class AdminController extends Controller
 
   public function booking()
   {
-    $data = Booking::paginate(10);
+    $data = Booking::paginate(4);
     return view('admin.booking', compact('data'));
   }
   public function cart(Request $request)
