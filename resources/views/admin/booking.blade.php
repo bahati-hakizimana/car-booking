@@ -40,6 +40,7 @@
                               <th>airport</th>
                               <th>Destination</th>
                               <th>Driver_status</th>
+                              <th>Deposite/Car</th>
                               <th>Total Deposite</th>
                               <th>Product_id</th>
                               <th>quantity</th>
@@ -67,6 +68,7 @@
                               <td>{{$booking->airport}}</td>
                               <td>{{$booking->destination}}</td>
                               <td>{{$booking->driver_status}}</td>
+                              <td>{{$booking->deposit}}</td>
                               <td>{{$booking->totaldeposit}}</td>
                               <td>{{$booking->product_id}}</td>
                               <td>{{$booking->quantity}}</td>
