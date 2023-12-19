@@ -263,7 +263,7 @@
                                 <div class="mb-3 mt-3">
                                     <label for="deposit" class="form-element">Deposite/Rwf:</label>
                                     <input type="number" class="form-control" id=""
-                                          name="totaldeposit"
+                                          name="deposit"
                                         value="25000" required>
                                     <div class="valid-feedback">Valid.</div>
                                     <div class="invalid-feedback">Please fill out this field.</div>
@@ -271,7 +271,7 @@
                                 <div class="mb-3 mt-3">
                                     <label for="TotalDeposit" class="form-label">Total Deposite/Rwf:</label>
                                     <input type="number" class="form-control" id="deposite"
-                                          name="deposit"
+                                          name="totadeposit"
                                         value="25000" required>
                                     <div class="valid-feedback">Valid.</div>
                                     <div class="invalid-feedback">Please fill out this field.</div>
