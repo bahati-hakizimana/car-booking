@@ -23,13 +23,13 @@
             <a href="#"><h4>{{$product->name}}</h4></a>
             <h6>${{$product->price}}-day</h6>
             <a class="btn btn-danger" href="{{url('bookings',$product->id)}}">Book Now</a>
-            <form action="{{route('addcart',$product->id)}}" method="POST" class="mt-2">
+            {{-- <form action="{{route('addcart',$product->id)}}" method="POST" class="mt-2">
               @csrf
               <input type="number" name="quantity" class="mt-2 form-control" 
               value="1" min="1" style="width: 100px;">
               <br>
               <input class="btn btn-dark bg-dark"  type="submit" value="Add cart">
-            </form>
+            </form> --}}
             <span>Avairable</span>
           </div>
         </div>
