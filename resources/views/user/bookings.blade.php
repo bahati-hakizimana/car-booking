@@ -253,26 +253,26 @@
                                     <div class="invalid-feedback">Please fill out this field.</div>
                                 </div>
                                 <div class="mb-3 mt-3">
-                                    <label for="price" class="form-label">Price/day:</label>
+                                    <label for="price" class="form-label">Price/day $:</label>
                                     <input type="number" class="form-control" id="price"
-                                        placeholder="Enter the price per day" name="price"
-                                        value="{{ $data->price }}" required>
+                                        placeholder="Enter the price per day" name="price" 
+                                        value="{{ $data->price }}" $ required>
                                     <div class="valid-feedback">Valid.</div>
                                     <div class="invalid-feedback">Please fill out this field.</div>
                                 </div>
                                 <div class="mb-3 mt-3">
-                                    <label for="deposit" class="form-element">Deposite/Rwf:</label>
+                                    <label for="deposit" class="form-element">Deposite/$:</label>
                                     <input type="number" class="form-control" id=""
                                           name="deposit"
-                                        value="25000" required>
+                                        value="25" required>
                                     <div class="valid-feedback">Valid.</div>
                                     <div class="invalid-feedback">Please fill out this field.</div>
                                 </div>
                                 <div class="mb-3 mt-3">
-                                    <label for="TotalDeposit" class="form-label">Total Deposite/Rwf:</label>
+                                    <label for="TotalDeposit" class="form-label">Total Deposite/$:</label>
                                     <input type="number" class="form-control" id="deposite"
                                           name="totadeposit"
-                                        value="25000" required>
+                                        value="25" required>
                                     <div class="valid-feedback">Valid.</div>
                                     <div class="invalid-feedback">Please fill out this field.</div>
                                 </div>
@@ -461,78 +461,6 @@
             // $('#paymentGateway').change(showPaymentFields);
         });
     </script>
- 
-
-{{-- <script>
-  function togglePaypackField() {
-      var paypackFields = document.getElementById('paypackFields');
-      var paymentMethod = document.getElementById('payment_method').value;
-
-      // Show/hide paypackFields based on payment method selection
-      if (paymentMethod === 'paypack') {
-          paypackFields.style.display = 'block';
-      } else {
-          paypackFields.style.display = 'none';
-      }
-  }
-
-  function updateTotalPrice() {
-    let pricePerDay = parseFloat(document.getElementById('price').value) || 0;
-
-    // Parse pickup and dropoff dates
-    let pickupDate = new Date(document.getElementById('pickupDate').value);
-    let dropoffDate = new Date(document.getElementById('dropoffDate').value);
-
-    // Calculate total days
-    let oneDay = 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
-    let totalDays = Math.round(Math.abs((pickupDate - dropoffDate) / oneDay)) || 1;
-
-    // Additional fees
-    let additionalFees = 0;
-
-    // Add 10k if airport is selected
-    if (document.getElementById('selAirport').value === 'yes') {
-      additionalFees += 10000;
-    }
-
-    // Add 10k if driver is selected
-    if (document.getElementById('selDriver').value === 'yes') {
-      additionalFees += 10000;
-    }
-
-    // Add 5k if destination is 'east'
-    if (document.getElementById('selDestination').value === 'east') {
-      additionalFees += 5000;
-    }
-    if (document.getElementById('selDestination').value === 'west') {
-      additionalFees += 5000;
-    }
-    if (document.getElementById('selDestination').value === 'north') {
-      additionalFees += 5000;
-    }
-
-    // Calculate total price
-    let totalPrice = (pricePerDay + additionalFees) * totalDays;
-
-    // Update total days and total price fields
-    document.getElementById('totalDays').value = totalDays;
-    document.getElementById('totalPrice').value = totalPrice.toFixed(2);
-  }
-
-  // Attach the function to form inputs' change events
-  document.getElementById('selAirport').addEventListener('change', updateTotalPrice);
-  document.getElementById('selDriver').addEventListener('change', updateTotalPrice);
-  document.getElementById('selDestination').addEventListener('change', updateTotalPrice);
-  document.getElementById('price').addEventListener('input', updateTotalPrice);
-  document.getElementById('pickupDate').addEventListener('change', updateTotalPrice);
-  document.getElementById('dropoffDate').addEventListener('change', updateTotalPrice);
-
-  // Initial update
-  updateTotalPrice();
-
-
-
-</script> --}}
 <script>
     function togglePaypackField() {
     var paypackFields = document.getElementById('paypackFields');
@@ -544,7 +472,14 @@
     } else {
         paypackFields.style.display = 'none';
     }
+    updateTotalPrice();
 }
+function convertToRWF(totalPrice) {
+    
+    const conversionRate = 1280; 
+    return totalPrice * conversionRate;
+}
+
 
 function updateTotalPrice() {
     let pricePerDay = parseFloat(document.getElementById('price').value) || 0;
@@ -581,9 +516,17 @@ function updateTotalPrice() {
     // Calculate total price including deposit
     let totalPrice = (pricePerDay + additionalFees) * totalDays + deposit;
 
+    if (document.getElementById('payment_method').value === 'paypack') {
+        totalPrice = convertToRWF(totalPrice);
+    }
+
     // Update total days and total price fields
     document.getElementById('totalDays').value = totalDays;
-    document.getElementById('totalPrice').value = totalPrice.toFixed(2);
+    // document.getElementById('totalPrice').value = totalPrice.toFixed(2);
+    document.getElementById('totalPrice').value = (totalPrice.toFixed(2)).toLocaleString('en-US', {
+        style: 'currency',
+        currency: document.getElementById('payment_method').value === 'paypack' ? 'RWF' : 'USD'
+    });
 }
 
 // Attach the function to form inputs' change events
