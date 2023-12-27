@@ -247,6 +247,9 @@ ul.bus__list li {
                 <li><a href="#"><i class="fa fa-envelope" aria-hidden="true"></i> </a>info@empowerafricanow.com</li>
                 <li><a href="#"><i class="fa fa-envelope" aria-hidden="true"></i> </a>hyper100@gmail.com</li>
                 <li><a href="#"><i class="fa fa-whatsapp" aria-hidden="true"></i> </a>+1 (403) 473-1358</li>
+                <li><a href="#"><i class="fa fa-whatsapp" aria-hidden="true"></i> </a>KICUKIRO CENTRE</li>
+                <li><a href="#"><i class="fa fa-whatsapp" aria-hidden="true"></i> </a>KK 15 RD</li>
+                <li><a href="#"><i class="fa fa-whatsapp" aria-hidden="true"></i> </a>SANGWA PLAZA</li>
                 
               </ul>
               
