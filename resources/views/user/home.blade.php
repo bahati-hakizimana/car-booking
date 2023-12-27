@@ -243,13 +243,13 @@ ul.bus__list li {
               <ul >
                 
                 <li><i class="fa fa-phone text-primary" aria-hidden="true"></i> +250780045364</li>
-                <li class="mt-1"><i class="fa fa-envelope text-danger" aria-hidden="true"></i> info@empowerafricanow.com</li>
-                <li class="mt-1"><i class="fa fa-phone text-primary" aria-hidden="true"></i> +250 788 908 950</li>
-                <li class="mt1"><i class="fa fa-envelope text-danger" aria-hidden="true"></i> hyper100@gmail.com</li>
-                <li class="mt-1"><i class="fa fa-whatsapp text-primary" aria-hidden="true"></i> +1 (403) 473-1358</li>
-                <li class="mt-1"><i class="fa fa-map-marker text-danger" aria-hidden="true"></i> KICUKIRO CENTRE</li>
-                <li class="mt-1"><i class="fa fa-map-marker text-danger" aria-hidden="true"></i> KK 15 RD</li>
-                <li class="mt-1"><i class="fa fa-home text-primary" aria-hidden="true"></i> SANGWA PLAZA</li>
+                <li class="mt-3"><i class="fa fa-envelope text-danger" aria-hidden="true"></i> info@empowerafricanow.com</li>
+                <li class="mt-3"><i class="fa fa-phone text-primary" aria-hidden="true"></i> +250 788 908 950</li>
+                <li class="mt-3"><i class="fa fa-envelope text-danger" aria-hidden="true"></i> hyper100@gmail.com</li>
+                <li class="mt-3"><i class="fa fa-whatsapp text-primary" aria-hidden="true"></i> +1 (403) 473-1358</li>
+                <li class="mt-3"><i class="fa fa-map-marker text-danger" aria-hidden="true"></i> KICUKIRO CENTRE</li>
+                <li class="mt-3"><i class="fa fa-map-marker text-danger" aria-hidden="true"></i> KK 15 RD</li>
+                <li class="mt-3"><i class="fa fa-home text-primary" aria-hidden="true"></i> SANGWA PLAZA</li>
                 
               </ul>
               
