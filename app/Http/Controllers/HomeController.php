@@ -456,7 +456,7 @@ public function confirmbookings(Request $request)
     public function generatepdf()
     {
         $pdf = Pdf::loadView('terms-condition');
-        return $pdf->download('EAN-Terms & Condition' . time(). rand('1999','99999'). Str::random('10').'.pdf');
+        return $pdf->download('CarRental-Terms & Condition' . time(). rand('1999','99999'). Str::random('10').'.pdf');
     }
 }
 
