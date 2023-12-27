@@ -375,7 +375,7 @@
                                 <input class="form-check-input" type="checkbox" id="myCheck"
                                     name="terms_condition" value="Agreed" required>
                                 <label class="form-check-label" for="myCheck">By checking this box you agree to the
-                                    terms and condtions. <a href="#">Read here</a></label>
+                                    terms and condtions. <a href="{{route('read-terms-condition')}}">Read here</a></label>
                                 <div class="valid-feedback">Valid.</div>
                                 <div class="invalid-feedback">Check this checkbox to continue.</div>
                             </div>

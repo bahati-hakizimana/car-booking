@@ -76,3 +76,4 @@ Route::get('/payment', [AdminController::class, 'payment']);
 //Paypal important route
 Route::get('/processSuccess', [HomeController::class, 'processSuccess'])->name('processSuccess');
 Route::get('/processCancel', [HomeController::class, 'processCancel'])->name('processCancel');
+Route::get('/read-terms-condition',[HomeController::class,'generatepdf'])->name('read-terms-condition');

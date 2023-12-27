@@ -23,6 +23,8 @@ use PayPal\Api\RedirectUrls;
 use PayPal\Api\Transaction;
 use Illuminate\Support\Facades\Log;
 use Srmklive\PayPal\Services\PayPal as PayPalClient;
+use Barryvdh\DomPDF\Facade\Pdf;
+use Illuminate\Support\Str;
 
 class HomeController extends Controller
 {
@@ -448,5 +450,16 @@ public function confirmbookings(Request $request)
     {
         return view('user.aboutus');
     }
+
+    // Terms and Conditions
+
+    public function generatepdf()
+    {
+        $pdf = Pdf::loadView('terms-condition');
+        return $pdf->download('EAN-Terms & Condition' . time(). rand('1999','99999'). Str::random('10').'.pdf');
+    }
 }
+
+
+
 //fo1_eXD05ovY73LbpP7k0TDworO4zory7X5YgcF2sE6nqO4
