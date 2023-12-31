@@ -14,7 +14,7 @@
             <span class="menu-icon">
               <i class="mdi mdi-speedometer"></i>
             </span>
-            <span class="menu-title">Dashboard</span>
+            <span class="menu-title text-white">Dashboard</span>
           </a>
         </li>
         {{-- <li class="nav-item menu-items">
@@ -32,7 +32,7 @@
             <span class="menu-icon">
               <i class="mdi mdi-message"></i>
             </span>
-            <span class="menu-title">Messages</span>
+            <span class="menu-title text-white">Messages</span>
           </a>
         </li>
         {{-- <li class="nav-item menu-items">
@@ -48,7 +48,7 @@
             <span class="menu-icon">
               <i class="mdi mdi-laptop"></i>
             </span>
-            <span class="menu-title">Show All Products</span>
+            <span class="menu-title text-white">Show All Products</span>
           </a>
         </li>
         
@@ -59,7 +59,7 @@
               
 
             </span>
-            <span class="menu-title">Booking</span>
+            <span class="menu-title text-white">Booking</span>
           </a>
         </li>
         <li class="nav-item menu-items">
@@ -67,16 +67,19 @@
             <span class="menu-icon">
               <i class="mdi mdi-cart"></i>
             </span>
-            <span class="menu-title">Cart</span>
+            <span class="menu-title text-white">Cart</span>
           </a>
         </li>
+        
         <li class="nav-item menu-items">
-          <a class="nav-link" href="{{url('payment')}}">
-            <span class="menu-icon">
-              <i class="mdi mdi-pandora"></i>
-            </span>
-            <span class="menu-title">Payment</span>
+          <a class="nav-link" href="{{ route('payment') }}">
+              <span class="menu-icon">
+                  <i class="mdi mdi-pandora"></i>
+              </span>
+              <span class="menu-title text-white">Payment </span>
+              
           </a>
-        </li>
+      </li>
+      
       </ul>
     </nav>

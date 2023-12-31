@@ -25,6 +25,7 @@ use Illuminate\Support\Facades\Log;
 use Srmklive\PayPal\Services\PayPal as PayPalClient;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Str;
+use Illuminate\Support\Carbon;
 
 class HomeController extends Controller
 {
@@ -33,7 +34,19 @@ class HomeController extends Controller
         $user_type = Auth::user()?->user_type;
 
         if ($user_type == '1') {
-            return view('admin.home');
+            $totalPayments = Payment::count();
+            $totalAmount = Payment::sum('amount');
+            $totalBookings = Booking::count();
+            $totalProduct = Product::count();
+           
+            $todayDate = Carbon::now()->format('d-m-y');
+            $thisMonth = Carbon::now()->format('m');
+            $thisYear = Carbon::now()->format('Y');
+
+            $todayBookings = Booking::whereDate('created_at', $todayDate)->count();
+            $thisMontsBookings = Booking::whereMonth('created_at', $thisMonth)->count();
+            $thisYearBookings = Booking::whereYear('created_at', $thisYear)->count();
+            return view('admin.home',compact('totalPayments','totalAmount','totalBookings','todayBookings','thisMontsBookings','thisYearBookings','totalProduct'));
         } else {
 
             $data = product::paginate(6);

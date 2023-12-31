@@ -5,7 +5,7 @@
         <a class="navbar-brand  brand-logo-mini" href="{{url('redirect')}}"><img src="assets/images/Empower.png" alt="logo" /></a>
       </div>
       <div class="navbar-menu-wrapper  flex-grow d-flex align-items-stretch">
-        <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
+        <button class="navbar-toggler navbar-toggler align-self-center text-white" type="button" data-toggle="minimize">
           <span class="mdi mdi-menu"></span>
         </button>
         <ul class="navbar-nav navbar-nav-right">

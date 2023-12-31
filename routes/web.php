@@ -71,7 +71,8 @@ Route::get('/customer', [AdminController::class, 'customer'])->name('customer');
 
 //Payment Routes
 
-Route::get('/payment', [AdminController::class, 'payment']);
+Route::get('/payment', [AdminController::class, 'payment'])->name('payment');
+Route::get('/payment-count',[AdminController::class,'paymentCount'])->name('payment-count');
 
 //Paypal important route
 Route::get('/processSuccess', [HomeController::class, 'processSuccess'])->name('processSuccess');

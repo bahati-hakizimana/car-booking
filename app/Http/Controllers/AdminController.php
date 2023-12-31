@@ -9,6 +9,7 @@ use App\Models\Cart;
 use App\Models\Contact;
 use App\Models\Payment;
 use App\Models\Booking;
+use Illuminate\Support\Facades\DB;
 
 
 class AdminController extends Controller
@@ -166,8 +167,11 @@ class AdminController extends Controller
   }
   public function payment(Request $request)
   {
-    $data = Payment::paginate(10);
-    return view('admin.payment', compact('data'));
+      $data = Payment::paginate(10);
+      $totalPayments = Payment::count();
+      // $count = DB::select('SELECT COUNT(*) as count FROM payments')[0]->count;
+      // dd($count);
+      return view('admin.payment', compact('data','totalPayments'));
   }
   public function showdetails($id)
   {
