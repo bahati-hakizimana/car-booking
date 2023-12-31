@@ -151,7 +151,6 @@
               <div class="row">
                 <div class="col-8 col-sm-12 col-xl-8 my-auto">
                   <div class="d-flex d-sm-block d-md-flex align-items-center">
-                    {{-- <h2 class="mb-0">$45850</h2> --}}
                     <p class="text-success ms-2 mb-0 font-weight-medium">{{$thisMontsBookings}}</p>
                   </div>
                   <h6 class="text-muted font-weight-normal"> This Month Bookings</h6>
