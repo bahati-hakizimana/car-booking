@@ -39,7 +39,7 @@ class HomeController extends Controller
             $totalBookings = Booking::count();
             $totalProduct = Product::count();
            
-            $todayDate = Carbon::now()->format('d-m-y');
+            $todayDate = Carbon::now()->toDateString();
             $thisMonth = Carbon::now()->format('m');
             $thisYear = Carbon::now()->format('Y');
 
@@ -62,10 +62,32 @@ class HomeController extends Controller
         if (Auth::id()) {
             return redirect('redirect');
         } else {
-            $data = product::paginate(6);
+            $data = Product::paginate(6);
+
+            // Add availability status to each product
+            foreach ($data as $product) {
+                $product->availability_status = $this->calculateAvailabilityStatus($product->id);
+            }
+
             return view('user.home', compact('data'));
         }
     }
+
+    private function calculateAvailabilityStatus($productId)
+{
+    // Logic to calculate availability status based on your implementation
+    // Example: assuming you have a 'bookings' table with a 'product_id' and 'dropoff_date' column
+    $latestBooking = Booking::where('product_id', $productId)
+                           ->where('status', 'completed')
+                           ->latest('dropoff_date')
+                           ->first();
+
+    if ($latestBooking && now()->lt(Carbon::parse($latestBooking->dropoff_date))) {
+        return 'Booked';
+    } else {
+        return 'Available';
+    }
+}
 
     // Navigation Links
 
@@ -84,6 +106,7 @@ class HomeController extends Controller
     public function book(Request $request, $id)
     {
         try {
+            
             $booking = new Booking();
             // $booking->product_name = $request->input("product_name");
             $booking->product_id = $request->input("product_id");
@@ -101,15 +124,46 @@ class HomeController extends Controller
             $booking->payment_method = $request->input('payment_method');
             $booking->driver_status = $request->input('driver_status');
             $booking->airport = $request->input('airport');
-            $booking->first_name = $request->first_name;
-            $booking->last_name = $request->last_name;
-            $booking->email = $request->email;
-            $booking->phone = $request->phone;
-            $booking->destination = $request->destination;
+            $booking->first_name = $request->input('first_name');
+            $booking->last_name = $request->input('last_name');
+            $booking->email = $request->input('email');
+            $booking->phone = $request->input('phone');
+            $booking->destination  = $request->input('destination');
+            // $booking->first_name = $request->first_name;
+            // $booking->last_name = $request->last_name;
+            // $booking->email = $request->email;
+            // $booking->phone = $request->phone;
+            // $booking->destination = $request->destination;
             $booking->status = 'not delivered';
+
+            // dd($request->all());
 
             
             $booking->save();
+
+
+        //update Availablity
+
+        $product = Product::find($request->input("product_id"));
+
+        if ($product) {
+            $dropoffDate = Carbon::parse($request->input('dropoff_date'));
+
+            // Check if the drop-off date is in the future
+            if (now()->lt($dropoffDate)) {
+                // Car is not available until the drop-off date
+                $product->availability_status = 'booked';
+            } else {
+                // Car is available (drop-off date has passed)
+                $product->availability_status = 'available';
+            }
+
+            $product->save();
+        } else {
+            // Handle the case where the car (product) is not found
+            return redirect()->back()->with('error', 'Car not found for booking.');
+        }
+
           
          //payment process
          $phoneNumber = $request->input('payment');
@@ -209,7 +263,7 @@ class HomeController extends Controller
      dd($e);
  
      // Handle other exceptions and redirect accordingly
-     return redirect()->route('showcart')->with('error', 'Something went wrong. Please try again.');
+     return redirect()->route('public.bookings')->with('error', 'Something went wrong. Please try again.');
  }
     }
 

@@ -172,7 +172,7 @@
                         <h5 class="card-title text-center">Ca Availability Status</h5>
                         <p class="card-text text-center">
 
-
+                           
                         </p>
                     </div>
                 </div>
@@ -271,7 +271,7 @@
                                 <div class="mb-3 mt-3">
                                     <label for="TotalDeposit" class="form-label">Total Deposite/$:</label>
                                     <input type="number" class="form-control" id="deposite"
-                                          name="totadeposit"
+                                          name="totaldeposit"
                                         value="25" required>
                                     <div class="valid-feedback">Valid.</div>
                                     <div class="invalid-feedback">Please fill out this field.</div>
@@ -387,7 +387,7 @@
                             </select>
                             <label for="payment_method" class="form-label">Payment Method:</label>
                             </div>
-                            <button type="submit" class="btn btn-danger" style="width: 100%" onclick="calculateTotalPrice()">Book Now</button>
+                            <button type="submit" class="btn btn-danger" style="width: 100%" >Book Now</button>
                         </form>
 
                        

@@ -40,6 +40,7 @@
                               <th>Total Seats </th>
                               <th>Image </th>
                               <th>Inner Image </th>
+                              <th>Availability_Status </th>
                               <th>Actions </th>
                             </tr>
                           
@@ -52,8 +53,10 @@
                               <td>{{$product->price}}</td>
                               <td>{{$product->plate_number}}</td>
                               <td>{{$product->total_seating}}</td>
+                              
                               <td><img height="100px" width="100px" src="/storage/productimage/{{$product->image}}" alt=""></td>
                               <td><img height="100px" width="100px" src="/storage/productinner_image/{{$product->inner_image}}" alt="innerimage"></td>
+                              <td>{{$product->availability_status}}</td>
                               <td>
                                 <a class="btn btn-success" href="{{url('updateproduct',$product->id)}}">Update</a>
                                 <a class="btn btn-danger" href="{{ url('deleteproduct',$product->id) }}">Delete</a>

@@ -30,7 +30,7 @@
               <br>
               <input class="btn btn-dark bg-dark"  type="submit" value="Add cart">
             </form> --}}
-            <span>Avairable</span>
+            <span>{{$product->availability_status}}</span>
           </div>
         </div>
       </div>

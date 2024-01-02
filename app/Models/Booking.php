@@ -27,6 +27,7 @@ class Booking extends Model
         'total_days',
         'total_price',
         'terms_condition',
+        'availability_status',
         'status',
         'payment_method',
         'payment_id',
