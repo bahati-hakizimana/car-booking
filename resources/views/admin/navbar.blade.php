@@ -10,7 +10,7 @@
         </button>
         <ul class="navbar-nav navbar-nav-right">
           <li class="nav-item dropdown d-none d-lg-block">
-            <a class="nav-link btn btn-success"  aria-expanded="false" href="{{url('product')}}">+ Create New Product</a>
+            <a class="nav-link btn btn-success"  aria-expanded="false" href="{{url('product')}}">+ Create New Car</a>
            
           </li>
           <li class="nav-item nav-settings d-none d-lg-block">
