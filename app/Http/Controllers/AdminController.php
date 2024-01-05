@@ -179,7 +179,7 @@ class AdminController extends Controller
     }
 
     $bookings = $query->paginate(4);
-    return view('admin.booking', compact('bookings'));
+    return view('admin.booking', compact('bookings','date'));
 }
 
   public function cart(Request $request)

@@ -113,13 +113,14 @@
                               
                             </tr>
                             @endforeach 
-                            @if(method_exists($bookings,'links'))
+                            @if(method_exists($bookings, 'links'))
 
                             <div class="d-flex justify-content- mb-3">
-                              {!! $bookings->links() !!}
+                                {!! $bookings->appends(['date_filter' => $date])->links() !!}
                             </div>
-                      
-                            @endif
+                        
+                        @endif
+                        
                         </table>
                       </div>
                     </div>
