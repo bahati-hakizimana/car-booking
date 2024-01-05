@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Carbon;
 
 use Illuminate\Http\Request;
 use App\Models\Product;
@@ -144,11 +145,43 @@ class AdminController extends Controller
     return redirect()->back()->with('message', 'Product Updated successfully');
   }
 
-  public function booking()
-  {
-    $data = Booking::paginate(4);
-    return view('admin.booking', compact('data'));
-  }
+  public function booking(Request $request)
+{
+    // Filter
+    $query = Booking::query();
+    $date = $request->date_filter;
+
+    switch ($date) {
+        case 'today':
+            $query->whereDate('created_at', Carbon::today());
+            break;
+        case 'yesterday':
+            $query->whereDate('created_at', Carbon::yesterday());
+            break;
+        case 'this_week':
+            $query->whereBetween('created_at', [Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()]);
+            break;
+        case 'last_week':
+            $query->whereBetween('created_at', [Carbon::now()->subWeek(), Carbon::now()]);
+            break;
+        case 'this_month':
+            $query->whereMonth('created_at', Carbon::now()->month);
+            break;
+        case 'last_month':
+            $query->whereMonth('created_at', Carbon::now()->subMonth()->month);
+            break;
+        case 'this_year':
+            $query->whereYear('created_at', Carbon::now()->year);
+            break;
+        case 'last_year':
+            $query->whereYear('created_at', Carbon::now()->subYear()->year);
+            break;
+    }
+
+    $bookings = $query->paginate(4);
+    return view('admin.booking', compact('bookings'));
+}
+
   public function cart(Request $request)
   {
     $data = cart::all();

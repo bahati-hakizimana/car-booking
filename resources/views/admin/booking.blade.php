@@ -26,9 +26,28 @@
                 <div class="col-12 grid-margin">
                   <div class="card shadow" style="background: white;">
                     <div class="card-body">
-                      <h4 class="card-title text-dark">Products Bookings</h4>
+                      <h4 class="card-title text-dark">Cars Bookings</h4>
+                      <div class="form-group">
+                        <label for="data_filiter">filiter by date:</label>
+                        <form action="{{ url('booking') }}" method="get" class="form-inline" style="width:50%; padding:30px;">
+                          <div class="input-group">
+                              <select name="date_filter" id="" class="form-select">
+                                  <option value="">All Dates</option>
+                                  <option value="today">Today</option>
+                                  <option value="yesterday">Yesterday</option>
+                                  <option value="this_week">This Week</option>
+                                  <option value="last_week">Last week</option>
+                                  <option value="this_month">This month</option>
+                                  <option value="last_month">Last month</option>
+                                  <option value="last_year">Last year</option>
+                              </select>
+                              <button type="submit" class="btn bg-success btn-success">Filter</button>
+                          </div>
+                      </form>
+                      
+                      </div>
                       <div class="table-responsive">
-                        <table class="table">
+                        <table class="table ">
                           
                             <tr>
                               <th>Id</th>
@@ -52,13 +71,14 @@
                               <th>payment_method</th>
                               <th>Terms_Conditions</th>
                               <th>Availability_Status</th>
+                              <th>Date Created</th>
                               <th>Action</th>
 
                               
                             </tr>
                           
                            
-                            @foreach($data as $booking)
+                            @foreach($bookings ?? [] as $booking)
                             <tr>
                                 <td>{{$booking->id}}</td>
                               <td>{{$booking->first_name}}</td>
@@ -81,6 +101,7 @@
                               <td>{{$booking->payment_method}}</td>
                               <td>{{$booking->terms_condition}}</td>
                               <td>{{$booking->availability_status}}</td>
+                              <td>{{$booking->created_at->format('y-m-d H:1:s')}}</td>
                               
                               <td>
                                 <a class="btn btn-success" href="{{url('showdetails',$booking->id)}}">show details</a>
@@ -91,10 +112,10 @@
                               
                             </tr>
                             @endforeach 
-                            @if(method_exists($data,'links'))
+                            @if(method_exists($bookings,'links'))
 
-                            <div class="d-flex justify-content-center">
-                              {!! $data->links() !!}
+                            <div class="d-flex justify-content- mb-3">
+                              {!! $bookings->links() !!}
                             </div>
                       
                             @endif
