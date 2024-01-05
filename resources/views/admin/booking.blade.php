@@ -39,9 +39,10 @@
                                   <option value="last_week">Last week</option>
                                   <option value="this_month">This month</option>
                                   <option value="last_month">Last month</option>
+                                  <option value="this_year">This year</option>
                                   <option value="last_year">Last year</option>
                               </select>
-                              <button type="submit" class="btn bg-success btn-success">Filter</button>
+                              <button type="submit" class="btn bg-success btn-success">Filter by date</button>
                           </div>
                       </form>
                       
