@@ -206,7 +206,7 @@
                             <div class="form-section" id="section1">
                                 <div class="form-floating mb-2">
                                     <select class="form-select" id="selAirport" name="airport">
-                                        <option value="no">---------</option>
+                                        
                                         <option value="no">No</option>
                                         <option value="yes">Yes</option>
                                     </select>
@@ -216,7 +216,7 @@
 
                                 <div class="form-floating mb-2">
                                     <select class="form-select" id="selDriver" name="driver_status">
-                                        <option>-------</option>
+                                        
                                         <option value="no">No</option>
                                         <option value="yes">Yes</option>
                                     </select>
