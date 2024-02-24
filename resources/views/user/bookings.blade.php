@@ -254,8 +254,7 @@
                                 </div>
                                 <div class="mb-3 mt-3">
                                     <label for="price" class="form-label">Price/day $:</label>
-                                    <input class="form-control" id="price"
-                                         name="price" 
+                                    <input class="form-control" id="price" name="price" 
                                         value="{{ $data->price }}" $ required>
                                     <div class="valid-feedback">Valid.</div>
                                     <div class="invalid-feedback">Please fill out this field.</div>
