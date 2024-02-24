@@ -254,8 +254,8 @@
                                 </div>
                                 <div class="mb-3 mt-3">
                                     <label for="price" class="form-label">Price/day $:</label>
-                                    <input type="text" class="form-control" id="price"
-                                        placeholder="Enter the price per day" name="price" 
+                                    <input class="form-control" id="price"
+                                         name="price" 
                                         value="{{ $data->price }}" $ required>
                                     <div class="valid-feedback">Valid.</div>
                                     <div class="invalid-feedback">Please fill out this field.</div>
