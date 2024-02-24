@@ -21,7 +21,7 @@
           <a class="product"  href="{{url('bookings',$product->id)}}"><img width="150" height="300"  src="/storage/productimage/{{$product->image}}" alt=""></a>
           <div class="down-content">
             <a href="#"><h4>{{$product->name}}</h4></a>
-            <h6>${{$product->price}}-day</h6>
+            <h6>${{$product->price}}/day</h6>
             <a class="btn btn-danger" href="{{url('bookings',$product->id)}}">Book Now</a>
             {{-- <form action="{{route('addcart',$product->id)}}" method="POST" class="mt-2">
               @csrf

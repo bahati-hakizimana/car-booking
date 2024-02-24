@@ -202,9 +202,9 @@ ul.bus__list li {
                   @else
                       <li><a class="nav-link"  href="{{ route('login') }}" >Log in</a></li>
 
-                      @if (Route::has('register'))
+                      <!-- @if (Route::has('register'))
                          <li><a class="nav-link"   href="{{ route('register') }}">Register</a></li>
-                      @endif
+                      @endif -->
                   @endauth
               
           @endif
@@ -268,7 +268,7 @@ ul.bus__list li {
       <div class="container bg-dark shadow">
         <div class="footer__content bg-dark">
           <div class="footer__heading">
-            <h4 class="text-light">get us through our socialmedia</h4>
+            <h4 class="text-light">Get us through our socialmedia</h4>
           </div>
           <p class="mb-0 text-light">copylight © 2023 EmpowerAfrica Now Ltd</p>
      

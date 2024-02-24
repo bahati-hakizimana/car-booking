@@ -151,19 +151,19 @@
                         <p class="card-text text-center">
                             {{ $data->name }}
                         </p>
-                        <h5 class="card-title text-center">Car description</h5>
+                        <!-- <h5 class="card-title text-center">Car description</h5>
                         <p class="card-text text-center">
                             {{ $data->description }}
-                        </p>
+                        </p> -->
                         <h5 class="card-title text-center">Total Seatings</h5>
                         <p class="card-text text-center">
 
                             {{ $data->total_seating }}
                         </p>
-                        <h5 class="card-title text-center">Plate Number</h5>
+                        <!-- <h5 class="card-title text-center">Plate Number</h5>
                         <p class="card-text text-center">
                             {{ $data->plate_number }}
-                        </p>
+                        </p> -->
                         <h5 class="card-title text-center">Car Price per Day</h5>
                         <p class="card-text text-center">
 
@@ -225,7 +225,7 @@
 
                                 <div class="form-floating mb-2">
                                     <select class="form-select" id="selDestination" name="destination">
-                                        <option>------</option>
+                                        <!-- <option>------</option> -->
                                         <option value="Kigali">Kigali</option>
                                         <option value="east">East</option>
                                         <option value="north">North</option>
@@ -254,7 +254,7 @@
                                 </div>
                                 <div class="mb-3 mt-3">
                                     <label for="price" class="form-label">Price/day $:</label>
-                                    <input type="number" class="form-control" id="price"
+                                    <input type="text" class="form-control" id="price"
                                         placeholder="Enter the price per day" name="price" 
                                         value="{{ $data->price }}" $ required>
                                     <div class="valid-feedback">Valid.</div>
@@ -262,7 +262,7 @@
                                 </div>
                                 <div class="mb-3 mt-3">
                                     <label for="deposit" class="form-element">Deposite/$:</label>
-                                    <input type="number" class="form-control" id=""
+                                    <input type="text" class="form-control" id=""
                                           name="deposit"
                                         value="25" required>
                                     <div class="valid-feedback">Valid.</div>
@@ -270,7 +270,7 @@
                                 </div>
                                 <div class="mb-3 mt-3">
                                     <label for="TotalDeposit" class="form-label">Total Deposite/$:</label>
-                                    <input type="number" class="form-control" id="deposite"
+                                    <input type="text" class="form-control" id="deposite"
                                           name="totaldeposit"
                                         value="25" required>
                                     <div class="valid-feedback">Valid.</div>
@@ -497,17 +497,17 @@ function updateTotalPrice() {
 
     // Add 10k if airport is selected
     if (document.getElementById('selAirport').value === 'yes') {
-        additionalFees += 10000;
+        additionalFees += 10;
     }
 
     // Add 10k if driver is selected
     if (document.getElementById('selDriver').value === 'yes') {
-        additionalFees += 10000;
+        additionalFees += 10;
     }
 
     // Add 5k if destination is 'east', 'west', or 'north'
     if (['east', 'west', 'north'].includes(document.getElementById('selDestination').value)) {
-        additionalFees += 5000;
+        additionalFees += 5;
     }
 
     // Get deposit value
