@@ -309,23 +309,6 @@
                                 <button type="button" id="backButton" class="btn btn-secondary">Back</button>
 
                             </div>
-                            <div class="form-check mb-3">
-                                <input class="form-check-input" type="checkbox" id="myCheck"
-                                    name="terms_condition" value="Agreed" required>
-                                <label class="form-check-label" for="myCheck">By checking this box you agree to the
-                                    terms and condtions. <a href="{{route('read-terms-condition')}}">Read here</a></label>
-                                <div class="valid-feedback">Valid.</div>
-                                <div class="invalid-feedback">Check this checkbox to continue.</div>
-                            </div>
-                            <div class="form-floating mb-2">
-                              <select class="form-select" id="payment_method" name="payment_method" onchange="togglePaypackField()">
-                                <option>-------</option>
-                                <option value="paypal">Paypal</option>
-                                <option value="paypack">Mobile Money</option>
-                            </select>
-                            <label for="payment_method" class="form-label">Payment Method:</label>
-                            </div>
-                            <button type="submit" class="btn btn-danger" style="width: 100%" >Book Now</button>
 
                             {{-- Section 2 --}}
                             <div class="form-section" id="section2" style="display: none;">
@@ -385,7 +368,23 @@
                                     <div class="invalid-feedback">Please fill out this field.</div>
                                 </div>
 
-
+                                <div class="form-check mb-3">
+                                <input class="form-check-input" type="checkbox" id="myCheck"
+                                    name="terms_condition" value="Agreed" required>
+                                <label class="form-check-label" for="myCheck">By checking this box you agree to the
+                                    terms and condtions. <a href="{{route('read-terms-condition')}}">Read here</a></label>
+                                <div class="valid-feedback">Valid.</div>
+                                <div class="invalid-feedback">Check this checkbox to continue.</div>
+                            </div>
+                            <div class="form-floating mb-2">
+                              <select class="form-select" id="payment_method" name="payment_method" onchange="togglePaypackField()">
+                                <option>-------</option>
+                                <option value="paypal">Paypal</option>
+                                <option value="paypack">Mobile Money</option>
+                            </select>
+                            <label for="payment_method" class="form-label">Payment Method:</label>
+                            </div>
+                            <button type="submit" class="btn btn-danger" style="width: 100%" >Book Now</button>
 
                             </div>
                             
