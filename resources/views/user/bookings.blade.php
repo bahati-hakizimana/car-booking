@@ -172,7 +172,7 @@
                         <h5 class="card-title text-center">Ca Availability Status</h5>
                         <p class="card-text text-center">
 
-                           
+                        {{$product->availability_status}}
                         </p>
                     </div>
                 </div>
