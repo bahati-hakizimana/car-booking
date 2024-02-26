@@ -155,7 +155,7 @@
                         <p class="card-text text-center">
                             {{ $data->description }}
                         </p> -->
-                        <h5 class="card-title text-center">Total Seatings</h5>
+                        <h5 class="card-title text-center">Total Sitings</h5>
                         <p class="card-text text-center">
 
                             {{ $data->total_siting }}
