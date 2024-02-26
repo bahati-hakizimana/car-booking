@@ -170,10 +170,7 @@
                             $ {{ $data->price }}
                         </p>
                         <h5 class="card-title text-center">Ca Availability Status</h5>
-                        <p class="card-text text-center">
-
-                        {{$product->availability_status}}
-                        </p>
+                        <span>{{$product->availability_status}}</span>
                     </div>
                 </div>
             </div>
