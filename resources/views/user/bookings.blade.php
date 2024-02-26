@@ -158,7 +158,7 @@
                         <h5 class="card-title text-center">Total Seatings</h5>
                         <p class="card-text text-center">
 
-                            {{ $data->total_seating }}
+                            {{ $data->total_siting }}
                         </p>
                         <!-- <h5 class="card-title text-center">Plate Number</h5>
                         <p class="card-text text-center">
@@ -260,7 +260,7 @@
                                     <div class="invalid-feedback">Please fill out this field.</div>
                                 </div>
                                 <div class="mb-3 mt-3">
-                                    <label for="deposit" class="form-element">Deposite/$:</label>
+                                    <label for="deposit" class="form-element">Deposit/$:</label>
                                     <input type="text" class="form-control" id=""
                                           name="deposit"
                                         value="25" required>

@@ -5,7 +5,7 @@
     <div class="row">
       <div class="col-md-12">
         <div class="section-heading">
-          <h5 class="text-center mb-4">Book with us on afordable and friendry price</h5>
+          <h5 class="text-center mb-4">Book with on affordable price</h5>
           <form action="{{Route('search')}}" method="" class="form-inline mb-3" style="float: right; padding:10px;">
             @csrf
             <input class="form-control" type="search" name="search" placeholder="search product">
