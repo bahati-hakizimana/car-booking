@@ -158,7 +158,7 @@
                         <h5 class="card-title text-center">Total Sitings</h5>
                         <p class="card-text text-center">
 
-                            {{ $data->total_siting }}
+                            {{ $data->total_seating }}
                         </p>
                         <!-- <h5 class="card-title text-center">Plate Number</h5>
                         <p class="card-text text-center">
