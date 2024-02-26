@@ -169,8 +169,7 @@
 
                             $ {{ $data->price }}
                         </p>
-                        <h5 class="card-title text-center">Ca Availability Status</h5>
-                        <span class=" text-danger text-center">Avairable</span>
+                        <h5 class="text-danger card-title text-center">Avairable</h5>
                     </div>
                 </div>
             </div>
