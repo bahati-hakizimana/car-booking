@@ -236,7 +236,7 @@ ul.bus__list li {
                           </div>
                           <div class="mb-1">
                             <label for="exampleInputEmail1" class="form-label">Phone</label>
-                            <input type="number" id="phone" name="phone">
+                            <input type="text" id="phone" name="phone">
                           </div>
                           <div class="mb-1">
                             <label for="exampleInputPassword1" class="form-label">Message</label>
