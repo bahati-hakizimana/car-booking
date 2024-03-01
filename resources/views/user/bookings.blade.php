@@ -147,7 +147,6 @@
                         </button>
                     </div>
                     <div class="card-body">
-                        <h5 class="card-title text-center">Car Name</h5>
                         <p class="card-text text-center">
                             {{ $data->name }}
                         </p>
@@ -155,7 +154,7 @@
                         <p class="card-text text-center">
                             {{ $data->description }}
                         </p> -->
-                        <h5 class="card-title text-center">Total Sitings</h5>
+                        <!-- <h5 class="card-title text-center">Total Sitings</h5> -->
                         <p class="card-text text-center">
 
                             {{ $data->total_seating }}
@@ -164,10 +163,10 @@
                         <p class="card-text text-center">
                             {{ $data->plate_number }}
                         </p> -->
-                        <h5 class="card-title text-center">Car Price per Day</h5>
+                        <!-- <h5 class="card-title text-center">Car Price per Day</h5> -->
                         <p class="card-text text-center">
 
-                            $ {{ $data->price }}
+                            $ {{ $data->price }}  sitings
                         </p>
                         <h5 class="text-danger card-title text-center">Avairable</h5>
                     </div>
@@ -312,7 +311,7 @@
 
                                 <div class="mb-3">
                                     <label for="totalPrice" class="form-label">Total Price:</label>
-                                    <input type="number" class="form-control" id="totalPrice"
+                                    <input type="text" class="form-control" id="totalPrice"
                                         placeholder="Total price" name="totalprice" required>
                                     <div class="valid-feedback">Valid.</div>
                                     <div class="invalid-feedback">Please fill out this field.</div>
@@ -320,7 +319,7 @@
 
                                 <div id="paypackFields" class="mb-3 mt-3" style="display: none;">
                                   <label for="paypackNumber" class="form-label">Mtn/airtel/tigo:</label>
-                                  <input type="number" class="form-control" id="paypackNumber" placeholder="Enter your Mtn or aitel tigo number" name="payment" />
+                                  <input type="text" class="form-control" id="paypackNumber" placeholder="Enter your Mtn or aitel tigo number" name="payment" />
                                   <div class="valid-feedback">Valid.</div>
                                   <div class="invalid-feedback">Please fill out this field.</div>
                               </div>
@@ -357,7 +356,7 @@
 
                                 <div class="mb-3 mt-3">
                                     <label for="idPassport" class="form-label">Id/Passport:</label>
-                                    <input type="number" class="form-control" id="idPassport"
+                                    <input type="text" class="form-control" id="idPassport"
                                         placeholder="Enter ID or Passport" name="id_passport" required>
                                     <div class="valid-feedback">Valid.</div>
                                     <div class="invalid-feedback">Please fill out this field.</div>
