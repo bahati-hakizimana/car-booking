@@ -157,7 +157,7 @@
                         <!-- <h5 class="card-title text-center">Total Sitings</h5> -->
                         <p class="card-text text-center">
 
-                            {{ $data->total_seating }}
+                            {{ $data->total_seating }}   sitings
                         </p>
                         <!-- <h5 class="card-title text-center">Plate Number</h5>
                         <p class="card-text text-center">
@@ -166,9 +166,9 @@
                         <!-- <h5 class="card-title text-center">Car Price per Day</h5> -->
                         <p class="card-text text-center">
 
-                            $ {{ $data->price }}  sitings
+                            $ {{ $data->price }}  
                         </p>
-                        <h5 class="text-danger card-title text-center">Avairable</h5>
+                        <h5 class="text-danger card-title text-center">Available</h5>
                     </div>
                 </div>
             </div>
@@ -340,7 +340,7 @@
                                 </div>
                                 <div class="mb-3 mt-3">
                                     <label for="phone" class="form-label">PhoneNumber:</label>
-                                    <input type="number" class="form-control" id="phone"
+                                    <input type="text" class="form-control" id="phone"
                                         placeholder="Enter your phone number" name="phone" required>
                                     <div class="valid-feedback">Valid.</div>
                                     <div class="invalid-feedback">Please fill out this field.</div>
