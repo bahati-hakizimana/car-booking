@@ -36,8 +36,8 @@ crossorigin="anonymous" referrerpolicy="no-referrer" /> --}}
     {{-- @yield('css') --}}
     <style type="text/css">
       .logo{
-        width: 200px;
-        height: 50px;
+        width: 100px;
+        height: 100px;
       }
 
       .collapse{
