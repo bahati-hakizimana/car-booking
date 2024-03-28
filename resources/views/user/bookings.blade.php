@@ -378,7 +378,7 @@
                             </select>
                             <label for="payment_method" class="form-label">Payment Method:</label>
                             </div>
-                            <button type="submit" class="btn btn-danger" style="width: 100%" >Book Now</button>
+                            <button type="submit" class="btn btn-primary" style="width: 100%" >Book Now</button>
 
                             </div>
                             

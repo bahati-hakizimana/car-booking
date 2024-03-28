@@ -246,7 +246,7 @@ ul.bus__list li {
                             <label for="exampleInputPassword1" class="form-label">Message</label>
                               <textarea type="text" name="message" class="form-control" id="message"></textarea>
                           </div>
-                          <button type="submit" class="btn btn-primary">Submit</button>
+                          <button type="submit" class="btn bg-primary btn-primary">Submit</button>
                         </form>
                     </div>
                 </div>

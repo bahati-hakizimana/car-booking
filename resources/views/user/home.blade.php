@@ -162,7 +162,7 @@ ul.bus__list li {
     <!-- ***** Preloader End ***** -->
 
     <!-- Header -->
-    <header class="">
+    <header class="bg-primari text-white">
       <nav class="navbar navbar-expand-lg">
         <div class="container">
           <a href="{{route('homepage')}}"><img class="logo" src="assets/images/logo24.png" alt="logo"></a>
