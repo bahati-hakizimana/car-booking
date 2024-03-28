@@ -263,15 +263,15 @@ ul.bus__list li {
       </div>
     </div>
     
-    <section class="footer bg-dark mt-3">
-      <div class="container bg-dark shadow">
-        <div class="footer__content bg-dark">
+    <section class="footer bg-primary mt-3">
+      <div class="container bg-primary shadow">
+        <div class="footer__content bg-prymary">
           <div class="footer__heading">
             <h4 class="text-light">Get us through our socialmedia</h4>
           </div>
           <p class="mb-0 text-light">copylight © 2023 EmpowerAfrica Now Ltd</p>
      
-          <ul class="social__media">
+          <ul class="social__media text-white">
             <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
             <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
             <li><a href="#"><i class="fa fa-youtube" aria-hidden="true"></i></a></li>
