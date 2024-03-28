@@ -251,7 +251,7 @@ ul.bus__list li {
                                      rental properties or rental cars, everything seemed difficult. <br>
                               </span>
                           </p>
-                          <span class="read-more-btn text-danger">Read More...</span>
+                          <span class="read-more-btn text-primary">Read More...</span>
                       </div>
               
                       <div class="container-para">
@@ -271,7 +271,7 @@ ul.bus__list li {
                                business. As you do you are helping us Empower Africa Now andf the world at large
                               </span>
                           </p>
-                          <span class="read-more-btn text-danger">Read More...</span>
+                          <span class="read-more-btn text-primary">Read More...</span>
                       </div>
               
                   </div>
@@ -282,24 +282,24 @@ ul.bus__list li {
    
    
       </div>
-      <section class="footer bg-dark mt-3">
-        <div class="container bg-dark shadow">
-          <div class="footer__content bg-dark">
-            <div class="footer__heading">
-              <h4 class="text-light">get us through our socialmedia</h4>
-            </div>
-            <p class="mb-0 text-light">copylight © 2023 EmpowerAfrica Now Ltd</p>
-       
-            <ul class="social__media">
-              <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-              <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-              <li><a href="#"><i class="fa fa-youtube" aria-hidden="true"></i></a></li>
-              <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
-              <li><a href="#"><i class="fa fa-telegram" aria-hidden="true"></i></a></li>
-            </ul>
+      <section class="footer bg-primary mt-3">
+      <div class="container bg-primary shadow">
+        <div class="footer__content bg-prymary">
+          <div class="footer__heading">
+            <h4 class="text-light">Get us through our socialmedia</h4>
           </div>
+          <p class="mb-0 text-light">copylight © 2023 EmpowerAfrica Now Ltd</p>
+     
+          <ul class="social__media text-white">
+            <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+            <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+            <li><a href="#"><i class="fa fa-youtube" aria-hidden="true"></i></a></li>
+            <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+            <li><a href="#"><i class="fa fa-telegram" aria-hidden="true"></i></a></li>
+          </ul>
         </div>
-      </section>
+      </div>
+    </section>
   
   
     <!-- Bootstrap core JavaScript -->

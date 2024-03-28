@@ -9,7 +9,7 @@
           <form action="{{Route('search')}}" method="" class="form-inline mb-3" style="float: right; padding:10px;">
             @csrf
             <input class="form-control" type="search" name="search" placeholder="search product">
-            <input type="submit" value="search" class="btn btn-danger bg-danger "> 
+            <input type="submit" value="search" class="btn btn-primary bg-primary "> 
           </form>
         </div>
       </div>
@@ -22,7 +22,7 @@
           <div class="down-content">
             <a href="#"><h4>{{$product->name}}</h4></a>
             <h6>${{$product->price}}/day</h6>
-            <a class="btn btn-danger" href="{{url('bookings',$product->id)}}">Book Now</a>
+            <a class="btn btn-primary" href="{{url('bookings',$product->id)}}">Book Now</a>
             {{-- <form action="{{route('addcart',$product->id)}}" method="POST" class="mt-2">
               @csrf
               <input type="number" name="quantity" class="mt-2 form-control" 
