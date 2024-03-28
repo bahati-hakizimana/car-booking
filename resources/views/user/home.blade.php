@@ -36,7 +36,7 @@ crossorigin="anonymous" referrerpolicy="no-referrer" /> --}}
     {{-- @yield('css') --}}
     <style type="text/css">
       .logo{
-        width: 100px;
+        width: 50px;
         height: 50px;
       }
 
