@@ -63,11 +63,11 @@
           <h4>Looking for the best servises?</h4>
           <p><a rel="nofollow" href="#" target="_parent">Empower Africa</a> vist our Websit for more information.</p>
           <ul class="featured-list">
-            <li><a href="#">Lorem ipsum dolor sit amet</a></li>
-            <li><a href="#">Consectetur an adipisicing elit</a></li>
-            <li><a href="#">It aquecorporis nulla aspernatur</a></li>
-            <li><a href="#">Corporis, omnis doloremque</a></li>
-            <li><a href="#">Non cum id reprehenderit</a></li>
+            <li><a href="#">We provide Pharmacy Services</a></li>
+            <li><a href="#">Business advertising</a></li>
+            <li><a href="#">Real Estate</a></li>
+            <li><a href="#">Pharmacy</a></li>
+            <li><a href="#">Consulting</a></li>
           </ul>
           
         </div>
