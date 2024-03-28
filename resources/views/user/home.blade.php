@@ -37,7 +37,7 @@ crossorigin="anonymous" referrerpolicy="no-referrer" /> --}}
     <style type="text/css">
       .logo{
         width: 100px;
-        height: 100px;
+        height: 50px;
       }
 
       .collapse{
