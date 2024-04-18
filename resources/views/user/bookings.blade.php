@@ -89,9 +89,9 @@
                                 @else
                             <li><a class="nav-link" href="{{ route('login') }}">Log in</a></li>
 
-                            @if (Route::has('register'))
+                            <!-- @if (Route::has('register'))
                                 <li><a class="nav-link" href="{{ route('register') }}">Register</a></li>
-                            @endif
+                            @endif -->
                         @endauth
 
                         @endif

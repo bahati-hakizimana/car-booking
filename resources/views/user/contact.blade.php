@@ -151,12 +151,12 @@ ul.bus__list li {
              
                   @auth
 
-                  <li class="nav-item">
+                  <!-- <li class="nav-item">
                     <a class="nav-link" href="{{route('showcart')}}">
                       <i class="fa fa-shopping-cart" aria-hidden="true"></i>
                       Cart[{{$count}}]</a>
                     
-                  </li>
+                  </li> -->
                      
                         <x-app-layout>
     
@@ -165,9 +165,9 @@ ul.bus__list li {
                   @else
                       <li><a class="nav-link"  href="{{ route('login') }}" >Log in</a></li>
 
-                      @if (Route::has('register'))
+                      <!-- @if (Route::has('register'))
                          <li><a class="nav-link"   href="{{ route('register') }}">Register</a></li>
-                      @endif
+                      @endif -->
                   @endauth
               
           @endif
