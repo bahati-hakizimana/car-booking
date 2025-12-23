@@ -38,7 +38,7 @@ class HomeController extends Controller
             $totalAmount = Payment::sum('amount');
             $totalBookings = Booking::count();
             $totalProduct = Product::count();
-           
+
             $todayDate = Carbon::now()->toDateString();
             $thisMonth = Carbon::now()->format('m');
             $thisYear = Carbon::now()->format('Y');
@@ -106,7 +106,7 @@ class HomeController extends Controller
     public function book(Request $request, $id)
     {
         try {
-            
+
             $booking = new Booking();
             // $booking->product_name = $request->input("product_name");
             $booking->product_id = $request->input("product_id");
@@ -138,7 +138,7 @@ class HomeController extends Controller
 
             // dd($request->all());
 
-            
+
             $booking->save();
 
 
@@ -164,13 +164,13 @@ class HomeController extends Controller
             return redirect()->back()->with('error', 'Car not found for booking.');
         }
 
-          
+
          //payment process
          $phoneNumber = $request->input('payment');
          $totalPrice = (int) $request->input('totalprice');
          $payment_method = $request->input('payment_method');
 
-        
+
 
          $payment_method = $request->filled('payment_method') ? $request->input('payment_method') : null;
 
@@ -187,8 +187,8 @@ class HomeController extends Controller
                  'phone' => $phoneNumber,
                  'amount' => $totalPrice,
              ]);
-             
-             
+
+
              $payment = new Payment();
              $payment->ref = $cashin['ref'];
              $payment->status = $cashin['status'];
@@ -197,8 +197,8 @@ class HomeController extends Controller
              $payment->kind = $cashin['kind'];
              $payment->created_at = $cashin['created_at'];
 
-             
-             
+
+
              $payment->save();
 
 
@@ -209,7 +209,7 @@ class HomeController extends Controller
 
              return redirect()->back()->with('message', 'Payment Initiated! Please confirm on you mobile');
          } else if ($payment_method == "paypal") {
-             // PayPal Logic 
+             // PayPal Logic
 
              $provider = new PayPalClient;
              $provider->setApiCredentials(config('paypal'));
@@ -231,7 +231,7 @@ class HomeController extends Controller
                      ]
                  ]
              ]);
-             
+
              Log::info('PayPal Response: ' . print_r($response, true));
 
              if (isset($response['id'])) {
@@ -242,26 +242,26 @@ class HomeController extends Controller
                  }
                  dd($request->all());
              }
-             
+
               else {
                  Log::error('PayPal Order Creation Error: ' . print_r($response, true));
              }
-             
+
              dd($response);
          } else {
              return redirect()->back()->with("message", "Invalid payment method");
          }
-         
-     
-     
+
+
+
      return redirect()->back()->with('message', 'Car booking confirmed successfully');
   }   catch (\Exception $e) {
      // Log the exception
      Log::error('Exception in confirmbookings method: ' . $e->getMessage());
- 
+
      // Display exception details on the error page
-     dd($e);
- 
+    //  dd($e);
+
      // Handle other exceptions and redirect accordingly
      return redirect()->route('public.bookings')->with('error', 'Something went wrong. Please try again.');
  }
@@ -399,19 +399,19 @@ public function confirmbookings(Request $request)
             $booking->status = 'not delivered';
 
 
-            
 
-            
-            
+
+
+
             $booking->save();
 
-    
+
             //payment process
             $phoneNumber = $request->input('payment');
             $totalPrice = (int) $request->input('totalprice');
             $payment_method = $request->input('payment_method');
 
-           
+
 
             $payment_method = $request->filled('payment_method') ? $request->input('payment_method') : null;
 
@@ -428,8 +428,8 @@ public function confirmbookings(Request $request)
                     'phone' => $phoneNumber,
                     'amount' => $totalPrice,
                 ]);
-                
-                
+
+
                 $payment = new Payment();
                 $payment->ref = $cashin['ref'];
                 $payment->status = $cashin['status'];
@@ -439,18 +439,18 @@ public function confirmbookings(Request $request)
                 $payment->created_at = $cashin['created_at'];
 
                 // dd($request->all());
-                
+
                 $payment->save();
-          
+
 
                 $booking->payment_id = $payment->id;
 
-                
+
                 $booking->save();
 
                 return redirect()->back()->with('message', 'Payment Initiated! Please confirm on you mobile');
             } else if ($payment_method == "paypal") {
-                // PayPal Logic 
+                // PayPal Logic
 
                 $provider = new PayPalClient;
                 $provider->setApiCredentials(config('paypal'));
@@ -472,7 +472,7 @@ public function confirmbookings(Request $request)
                         ]
                     ]
                 ]);
-                
+
                 Log::info('PayPal Response: ' . print_r($response, true));
 
                 if (isset($response['id'])) {
@@ -483,26 +483,26 @@ public function confirmbookings(Request $request)
                     }
                     dd($request->all());
                 }
-                
+
                  else {
                     Log::error('PayPal Order Creation Error: ' . print_r($response, true));
                 }
-                
+
                 dd($response);
             } else {
                 return redirect()->back()->with("message", "Invalid payment method");
             }
-            
+
         }
         DB::table('carts')->where('phone', $phone)->delete();
         return redirect()->back()->with('message', 'Car booking confirmed successfully');
      }   catch (\Exception $e) {
         // Log the exception
         Log::error('Exception in confirmbookings method: ' . $e->getMessage());
-    
+
         // Display exception details on the error page
         dd($e);
-    
+
         // Handle other exceptions and redirect accordingly
         return redirect()->route('showcart')->with('error', 'Something went wrong. Please try again.');
     }

@@ -58,7 +58,7 @@
     <header class="">
         <nav class="navbar navbar-expand-lg">
             <div class="container">
-            <a href="{{route('homepage')}}"><img class="logo" src="assets/images/logo24.png" alt="logo"></a>
+            <a href="{{route('homepage')}}"><img class="logo" src="/assets/images/logo24.png" alt="logo"></a>
 
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
                     aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -108,11 +108,11 @@
     <div class="banner header-text">
     </div>
     <div class="container mt3">
-      
+
         <h5 class="text-center mt3 mb-3">Book your favolite car</h5>
         <div class="row g-3">
             <div class="col-12 col-md-6 col-lg-4" style="width: 50%;">
-              
+
                 <div class="card shadow">
                     <div id="demo" class="carousel slide" data-bs-ride="carousel">
 
@@ -130,9 +130,9 @@
                             </div>
                             <div class="carousel-item">
                                 <img src="/storage/productinner_image/{{$data->inner_image}}" alt="innerimage" class="card-img-top">
-                               
+
                             </div>
-                            
+
                         </div>
 
                         <!-- Left and right controls/icons -->
@@ -165,7 +165,7 @@
                         <!-- <h5 class="card-title text-center">Car Price per Day</h5> -->
                         <p class="card-text text-center">
 
-                            $ {{ $data->price }}  
+                            $ {{ $data->price }}
                         </p>
                         <h5 class="text-danger card-title text-center">Available</h5>
                     </div>
@@ -189,10 +189,10 @@
                 <div class="card shadow">
 
                     <div class="card-body">
-                      
+
 
                         <form class="form-sample" action="{{ route('book', $data->id) }}" method="POST">
-                          
+
                             @csrf
                             @method('POST')
 
@@ -200,7 +200,7 @@
                             <div class="form-section" id="section1">
                                 <div class="form-floating mb-2">
                                     <select class="form-select" id="selAirport" name="airport">
-                                        
+
                                         <option value="no">No</option>
                                         <option value="yes">Yes</option>
                                     </select>
@@ -210,7 +210,7 @@
 
                                 <div class="form-floating mb-2">
                                     <select class="form-select" id="selDriver" name="driver_status">
-                                        
+
                                         <option value="no">No</option>
                                         <option value="yes">Yes</option>
                                     </select>
@@ -238,7 +238,7 @@
                                     <div class="valid-feedback">Valid.</div>
                                     <div class="invalid-feedback">Please fill out this field.</div>
                                 </div>
-                               
+
                                 <div class="mb-3 mt-3" hidden="">
                                     <label for="productName" class="form-label">Product Quantity:</label>
                                     <input type="text" class="form-control" id="productName"
@@ -248,7 +248,7 @@
                                 </div>
                                 <div class="mb-3 mt-3">
                                     <label for="price" class="form-label">Price/day $:</label>
-                                    <input class="form-control" id="price" name="price" 
+                                    <input class="form-control" id="price" name="price"
                                         value="{{ $data->price }}" $ required>
                                     <div class="valid-feedback">Valid.</div>
                                     <div class="invalid-feedback">Please fill out this field.</div>
@@ -257,7 +257,7 @@
                                     <label for="deposit" class="form-element">Deposit/$:</label>
                                     <input type="text" class="form-control" id=""
                                           name="deposit"
-                                        value="25" required>
+                                        value="1" required>
                                     <div class="valid-feedback">Valid.</div>
                                     <div class="invalid-feedback">Please fill out this field.</div>
                                 </div>
@@ -265,7 +265,7 @@
                                     <label for="TotalDeposit" class="form-label">Total Deposite/$:</label>
                                     <input type="text" class="form-control" id="deposite"
                                           name="totaldeposit"
-                                        value="25" required>
+                                        value="1" required>
                                     <div class="valid-feedback">Valid.</div>
                                     <div class="invalid-feedback">Please fill out this field.</div>
                                 </div>
@@ -380,13 +380,13 @@
                             <button type="submit" class="btn btn-primary" style="width: 100%" >Book Now</button>
 
                             </div>
-                            
+
                         </form>
 
-                       
+
     </div>
                 </div>
-    
+
 
 
     <!-- Bootstrap core JavaScript -->
@@ -418,7 +418,7 @@
         }
     </script>
 
-  
+
 
     <script>
         $(document).ready(function() {
@@ -443,7 +443,7 @@
                 }
             }
 
-            
+
 
             // Initial setup
             showSection(currentSection);
@@ -468,8 +468,8 @@
     updateTotalPrice();
 }
 function convertToRWF(totalPrice) {
-    
-    const conversionRate = 1280; 
+
+    const conversionRate = 1280;
     return totalPrice * conversionRate;
 }
 
@@ -544,7 +544,7 @@ function calculateTotalPrice() {
 
 
 
-  
+
 
 
 
