@@ -22,7 +22,6 @@
 
         <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
-    {{-- Paypal sdk javascript --}}
     <script src="https://www.paypal.com/sdk/js?client-id={{ env('PAYPAL_SANDBOX_CLIENT_ID') }}"></script>
 
 
@@ -32,7 +31,6 @@
     <link rel="stylesheet" href="/assets/css/templatemo-sixteen.css">
     <link rel="stylesheet" href="/assets/css/owl.css">
 
-    {{-- css --}}
     <style type="text/css">
         .logo{
         width: 50px;
@@ -89,9 +87,7 @@
                                 @else
                             <li><a class="nav-link" href="{{ route('login') }}">Log in</a></li>
 
-                            <!-- @if (Route::has('register'))
-                                <li><a class="nav-link" href="{{ route('register') }}">Register</a></li>
-                            @endif -->
+
                         @endauth
 
                         @endif
@@ -120,7 +116,6 @@
                         <div class="carousel-indicators">
                             <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active"></button>
                             <button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
-                            {{-- <button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button> --}}
                         </div>
 
                         <!-- The slideshow/carousel -->
@@ -149,20 +144,10 @@
                         <p class="card-text text-center">
                             {{ $data->name }}
                         </p>
-                        <!-- <h5 class="card-title text-center">Car description</h5>
-                        <p class="card-text text-center">
-                            {{ $data->description }}
-                        </p> -->
-                        <!-- <h5 class="card-title text-center">Total Sitings</h5> -->
                         <p class="card-text text-center">
 
                             {{ $data->total_seating }}   sitings
                         </p>
-                        <!-- <h5 class="card-title text-center">Plate Number</h5>
-                        <p class="card-text text-center">
-                            {{ $data->plate_number }}
-                        </p> -->
-                        <!-- <h5 class="card-title text-center">Car Price per Day</h5> -->
                         <p class="card-text text-center">
 
                             $ {{ $data->price }}
@@ -196,7 +181,6 @@
                             @csrf
                             @method('POST')
 
-                            {{-- Section 1 --}}
                             <div class="form-section" id="section1">
                                 <div class="form-floating mb-2">
                                     <select class="form-select" id="selAirport" name="airport">
@@ -219,7 +203,6 @@
 
                                 <div class="form-floating mb-2">
                                     <select class="form-select" id="selDestination" name="destination">
-                                        <!-- <option>------</option> -->
                                         <option value="Kigali">Kigali</option>
                                         <option value="east">East</option>
                                         <option value="north">North</option>
@@ -296,14 +279,12 @@
 
                             </div>
 
-                            {{-- Next button --}}
                             <div>
                                 <button type="button" id="nextButton" class="btn btn-primary">Next</button>
                                 <button type="button" id="backButton" class="btn btn-secondary">Back</button>
 
                             </div>
 
-                            {{-- Section 2 --}}
                             <div class="form-section" id="section2" style="display: none;">
                                 <!-- Fields for section 2 -->
 
@@ -406,6 +387,7 @@
     <script src="/assets/js/accordions.js"></script>
 
 
+
     <script language="text/Javascript">
         cleared[0] = cleared[1] = cleared[2] = 0;
 
@@ -417,6 +399,7 @@
             }
         }
     </script>
+
 
 
 

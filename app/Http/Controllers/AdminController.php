@@ -14,13 +14,13 @@ use App\Models\Booking;
 use Illuminate\Support\Facades\DB;
 
 
+
 class AdminController extends Controller
 {
   public function product()
   {
     return view('admin.product');
   }
-  /// show All product from database
   public function showproduct()
   {
     $data = product::paginate(10);
@@ -30,11 +30,11 @@ class AdminController extends Controller
 
 
 
+
   public function uploadproduct(Request $request)
   {
     $request->validate([
       'image' => 'required|image',
-      // 'inner_image' => 'required|inner_image',
       'inner_image' => 'required|image',
 
 
@@ -48,11 +48,10 @@ class AdminController extends Controller
       $imagename = uniqid() . '.' . $image->getClientOriginalExtension();
       $inner_imagename = uniqid() . '.' . $inner_image->getClientOriginalExtension();
 
-      // Store the file in the 'productimage' directory
       if (!File::exists('storage/productimage')) {
         File::makeDirectory('storage/productimage', 0755, true, true);
     }
-    
+
     if (!File::exists('storage/productinner_image')) {
         File::makeDirectory('storage/productinner_image', 0755, true, true);
     }
@@ -61,18 +60,16 @@ class AdminController extends Controller
       $data->inner_image = $inner_imagename;
 
       $data->image = $imagename;
-      // $data->inner_image = $inner_imagename;
 
 
 
-      // Other fields assignment
       $data->name = $request->name;
       $data->price = $request->price;
       $data->plate_number = $request->plate_number;
       $data->total_seating = $request->total_seating;
       $data->description = $request->des;
 
-      // dd($inner_image);
+
 
       $data->save();
 
@@ -87,7 +84,9 @@ class AdminController extends Controller
 
 
 
-  //delete product from database
+
+
+
   public function deleteproduct($id)
   {
     $data = product::find($id);
@@ -101,7 +100,6 @@ class AdminController extends Controller
     return redirect()->back()->with('message', 'booking deleted successfully');
   }
 
-  //Update Product 
 
   public function updateproduct($id)
   {
@@ -114,7 +112,7 @@ class AdminController extends Controller
   {
     $data = product::find($id);
 
-    // Image
+
     if ($request->hasFile('file')) {
       $image = $request->file('file');
       $inner_image = $request->file('inner_image');
@@ -125,29 +123,26 @@ class AdminController extends Controller
       $data->image = $imagename;
       $data->inner_image = $inner_imagename;
     }
-    // dd($image,$inner_image);
-    // Other fields
+
     $data->name = $request->input('name');
     $data->price = $request->input('price');
     $data->plate_number = $request->input('plate_number');
     $data->total_seating = $request->input('total_seating');
 
-    // Ensure description is not null before setting it
+
     if ($request->has('desc')) {
       $data->description = $request->input('desc');
     }
-    // dd($request->all());
 
-    // Save Product
+
     $data->save();
 
-    // Return section
+
     return redirect()->back()->with('message', 'Product Updated successfully');
   }
 
   public function booking(Request $request)
 {
-    // Filter
     $query = Booking::query();
     $date = $request->date_filter;
 
@@ -189,7 +184,6 @@ class AdminController extends Controller
   }
 
 
-  // Get Messages
 
   public function messages()
   {
@@ -203,8 +197,7 @@ class AdminController extends Controller
   {
       $data = Payment::paginate(10);
       $totalPayments = Payment::count();
-      // $count = DB::select('SELECT COUNT(*) as count FROM payments')[0]->count;
-      // dd($count);
+
       return view('admin.payment', compact('data','totalPayments'));
   }
   public function showdetails($id)

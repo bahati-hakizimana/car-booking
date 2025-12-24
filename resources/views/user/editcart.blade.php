@@ -109,7 +109,7 @@
     <div class="banner header-text">
     </div>
     <div class="container mt-4">
-      
+
         <h5 class="text-center mt3 mb-3">Book your favolite car</h5>
         <div class="row g-3">
             <div class="col-12 col-md-6 col-lg-4" style="width: 50%;">
@@ -128,10 +128,10 @@
               @endif
 
                     <div class="card-body">
-                      
+
 
                         <form class="form-sample" action="{{ route('updatecart', $cart->id) }}" method="POST">
-                          
+
                             @csrf
                             @method('POST')
 
@@ -314,10 +314,10 @@
                             <button type="submit" class="btn btn-dark" style="width: 100%" onclick="calculateTotalPrice()">Book Now</button>
                         </form>
 
-                       
+
     </div>
                 </div>
-    
+
 
 
     <!-- Bootstrap core JavaScript -->
@@ -348,17 +348,6 @@
             }
         }
     </script>
-
-  
-
-    
-  
-
-
-  
-
-
-
 </body>
 
 </html>

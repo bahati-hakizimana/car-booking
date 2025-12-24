@@ -159,14 +159,14 @@
                                         <tr class=" text-dark">
                                             <td style="padding: 10px;font-size:20px">
                                                 <input type="text" name="productname[]"
-                                                    value=" 
+                                                    value="
                                                    {{ $carts->product_name }}"
                                                     hidden="">
                                                 {{ $carts->product_name }}
                                             </td>
                                             <td style="padding: 10px;font-size:20px">
                                                 <input type="text" name="productid[]"
-                                                    value=" 
+                                                    value="
                                               {{ $carts->product_id }}"
                                                     hidden="">
                                                 {{ $carts->product_id }}
@@ -180,7 +180,7 @@
                                             </td>
                                             <td style="padding: 10px;font-size:20px">
                                                 <input type="text" id="price" name="price[]"
-                                                    value=" 
+                                                    value="
                                                          {{ $carts->price }}"
                                                     hidden="">
                                                 {{ $carts->price }}
@@ -330,11 +330,11 @@
                                  <option>select .......</option>
                                 <option value="paypack">mobilemoney</option>
                                 <option value="paypal">Paypal</option>
-                                   
+
                             </select>
 
                         </div>
-                        
+
 
                         <div class="form-check mt-5">
                             <label class="col-sm-3 form-check-label">
@@ -391,7 +391,7 @@
             t.value = '';
             t.style.color = '#fff';
         }
-        
+
     </script>
 
 
@@ -399,8 +399,6 @@
     function togglePaymentField() {
       var mobileFields = document.getElementById('mobilemoneyFields');
       var paymentMethod = document.getElementById('payment_method').value;
-
-      // Show/hide paypackFields based on payment method selection
       if (paymentMethod === 'paypack') {
           mobilemoneyFields.style.display = 'block';
       } else {
@@ -432,9 +430,6 @@ document.addEventListener("DOMContentLoaded", function() {
     selAirportInput.addEventListener("change", updateTotal);
     selDriverInput.addEventListener("change", updateTotal);
     selDestinationInput.addEventListener("change", updateTotal);
-    // paymentMethodInput.addEventListener("change", togglePaymentFields);
-
-    // Calculate subtotal
     function calculateSubtotal() {
         let subtotal = 0;
         for (let i = 0; i < quantityInputs.length; i++) {
@@ -446,24 +441,19 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     function updateTotal() {
-        // Get values from the form
         const totalDays = parseFloat(totalDaysInput.value) || 0;
         const deposite = parseFloat(depositeInput.value) || 0;
         const selAirport = selAirportInput.value;
         const selDriver = selDriverInput.value;
         const selDestination = selDestinationInput.value;
 
-        // Calculate total deposit for each product
         let totalDeposite = 0;
         for (let i = 0; i < quantityInputs.length; i++) {
             const quantity = parseInt(quantityInputs[i].value) || 0;
             totalDeposite += quantity * deposite;
         }
-
-        // Calculate subtotal
         let subtotal = calculateSubtotal() + totalDeposite;
 
-        // Calculate additional fees based on user selections
         let additionalFees = 0;
 
         if (selAirport === 'yes') {
@@ -478,10 +468,7 @@ document.addEventListener("DOMContentLoaded", function() {
             additionalFees += 5000;
         }
 
-        // Calculate total price
         const totalPrice = totalDays * (subtotal + additionalFees);
-
-        // Update the form fields
         totalDepositeInput.value = totalDeposite.toFixed(2);
         subtotalInput.value = subtotal.toFixed(2);
         totalPriceInput.value = totalPrice.toFixed(2);
@@ -493,96 +480,19 @@ document.addEventListener("DOMContentLoaded", function() {
 
         console.log("pickupDate:", pickupDate);
     console.log("dropoffDate:", dropoffDate);
-
-    // Check if both dates are valid
     if (!isNaN(pickupDate.getTime()) && !isNaN(dropoffDate.getTime()) && pickupDate < dropoffDate) {
-        // Dates are valid, proceed with calculations
         const timeDiff = dropoffDate - pickupDate;
         const totalDays = Math.ceil(timeDiff / (1000 * 60 * 60 * 24));
         totalDaysInput.value = totalDays;
 
         updateTotal();
     } else {
-        // Handle invalid date format or range
         totalDaysInput.value = '';
         subtotalInput.value = '';
         totalPriceInput.value = '';
-        // console.error("Invalid date format or range");
     }
 }
 
-
-
-
-
-
-// Function definition
-// function togglePaymentFields() {
-//     var mobileMoneyFields = document.getElementById('mobilemoneyFields');
-//     var paymentMethod = document.getElementById('payment_method').value;
-
-//     // Show/hide mobileMoneyFields based on payment method selection
-//     if (paymentMethod === 'paypack') {
-//         mobileMoneyFields.style.display = 'block';
-//     } else {
-//         mobileMoneyFields.style.display = 'none';
-//     }
-// }
-
-// document.addEventListener("DOMContentLoaded", function() {
-//     // ... (your existing code)
-
-//     // Attach the event listener after the function is defined
-//     paymentMethodInput.addEventListener("change", togglePaymentFields);
-
-//     // ... (rest of your code)
-// });
-
-// // Move this line outside the DOMContentLoaded event listener
-// paymentMethodInput.addEventListener("change", togglePaymentFields);
-
-// function toggleMobilemoneyFields() {
-//       var mobilemoneyFields = document.getElementById('mobilemoneyFields');
-//       var paymentMethod = document.getElementById('payment_method').value;
-
-//       // Show/hide paypackFields based on payment method selection
-//       if (paymentMethod === 'paypack') {
-//           mobilemoneyFields.style.display = 'block';
-//       } else {
-//           mobilemoneyFields.style.display = 'none';
-//       }
-//   }
-
-// ... (other functions)
-
-// Function definition
-// function togglePaymentField() {
-//     var mobileMoneyFields = document.getElementById('mobilemoneyFields');
-//     var paymentMethod = document.getElementById('payment_method').value;
-
-//     // Show/hide mobileMoneyFields based on payment method selection
-//     if (paymentMethod === 'paypack') {
-//         mobileMoneyFields.style.display = 'block';
-        
-//         // Check if the mobilemoney input exists and is not disabled
-//         const mobileMoneyInput = document.getElementById('mobilemoney');
-//         if (mobileMoneyInput && !mobileMoneyInput.disabled) {
-//             mobileMoneyInput.focus();
-//         }
-//     } else {
-//         mobileMoneyFields.style.display = 'none';
-//     }
-// }
-
-// Attach the event listener
-// paymentMethodInput.addEventListener("change", togglePaymentFields);
-
-
-
-
-
-
-    // Form Validation
     function validateForm() {
         const isChecked = document.getElementById("termsCheckbox").checked;
         const idPassportValue = document.getElementById("idPassport").value.trim();

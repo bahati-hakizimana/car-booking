@@ -12,9 +12,7 @@ class ContactController extends Controller
     {
         return view('user.contact');
 
-    } //End of contact
-
-    //store message
+    }
 
     public function storemessage(Request $request)
     {

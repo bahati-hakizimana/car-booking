@@ -13,9 +13,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-{{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" 
-integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" 
-crossorigin="anonymous" referrerpolicy="no-referrer" /> --}}
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha384-rm7LJ1lC8CS9ZquFjJSKZlXvIpjmP5QSmV2P93aLlIwI69vwvc1k2t+CFwDlPgqP" crossorigin="anonymous">
 
 
@@ -31,9 +28,6 @@ crossorigin="anonymous" referrerpolicy="no-referrer" /> --}}
     <link rel="stylesheet" href="assets/css/templatemo-sixteen.css">
     <link rel="stylesheet" href="assets/css/owl.css">
 
-    {{-- css --}}
-
-    {{-- @yield('css') --}}
     <style type="text/css">
       .logo{
         width: 50px;
@@ -63,11 +57,11 @@ crossorigin="anonymous" referrerpolicy="no-referrer" /> --}}
       }
 
       .product-item .image-container:hover img {
-        transform: scale(1.1); 
+        transform: scale(1.1);
       }
       section.footer {
   background-color: #21d4fd;
- 
+
   position: relative;
   font-family: "Poppins";
   padding: 25px 0px;
@@ -76,7 +70,7 @@ crossorigin="anonymous" referrerpolicy="no-referrer" /> --}}
   padding: 25px;
   text-align: center;
   color: #fff;
-  
+
 }
 .footer__content img {
   width: 5%;
@@ -132,12 +126,12 @@ ul.social__media li {
   box-shadow: 0 2px 10px -1px rgba(0, 0, 0, 0.55),
     0 0px 20px 0px rgba(0, 0, 0, 0.55);
 }
- 
+
 ul.bus__list {
   padding: 0;
   margin: 0;
 }
- 
+
 ul.bus__list li {
   list-style-type: none;
   margin-bottom: 5px;
@@ -158,7 +152,7 @@ ul.bus__list li {
             <div></div>
             <div></div>
         </div>
-    </div>  
+    </div>
     <!-- ***** Preloader End ***** -->
 
     <!-- Header -->
@@ -166,7 +160,7 @@ ul.bus__list li {
       <nav class="navbar navbar-expand-lg">
         <div class="container">
           <a href="{{route('homepage')}}"><img class="logo" src="assets/images/logo24.png" alt="logo"></a>
-          
+
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -176,7 +170,7 @@ ul.bus__list li {
                 <a class="nav-link" href="{{route('homepage')}}">Home
                   <span class="sr-only">(current)</span>
                 </a>
-              </li> 
+              </li>
               <li class="nav-item">
                 <a class="nav-link" href="{{url('aboutus')}}">About Us</a>
               </li>
@@ -185,28 +179,24 @@ ul.bus__list li {
               </li>
               <li class="nav-item">
               @if (Route::has('login'))
-             
+
                   @auth
 
                   <li class="nav-item">
                     <a class="nav-link" href="{{route('showcart')}}">
                       <i class="fa fa-shopping-cart" aria-hidden="true"></i>
                       Cart[{{$count}}]</a>
-                    
+
                   </li>
-                     
+
                         <x-app-layout>
-    
+
                         </x-app-layout>
-                       
+
                   @else
                       <li><a class="nav-link"  href="{{ route('login') }}" >Log in</a></li>
-
-                      <!-- @if (Route::has('register'))
-                         <li><a class="nav-link"   href="{{ route('register') }}">Register</a></li>
-                      @endif -->
                   @endauth
-              
+
           @endif
 
               </li>
@@ -219,7 +209,7 @@ ul.bus__list li {
                  <button type="button" class="close" data-dismiss="alert">x</button>
                     {{session()->get('message')}}
                 </div>
-                
+
                 @endif
     </header>
 
@@ -239,30 +229,31 @@ ul.bus__list li {
           </div>
           <div class="col-md-6 mt-4">
             <div class="left-content">
-              
+
               <ul >
-                
-                
+
+
+
                 <li class="mt-3"><i class="fa fa-envelope text-danger" aria-hidden="true"></i> info@empowerafricanow.com</li>
                 <li class="mt-3"><i class="fa fa-phone text-primary" aria-hidden="true"></i> +250 788 908 950</li>
                 <li class="mt-3"><i class="fa fa-envelope text-danger" aria-hidden="true"></i> hyper100@gmail.com</li>
                 <li class="mt-3"><i class="fa fa-map-marker text-danger" aria-hidden="true"></i> KICUKIRO CENTRE</li>
                 <li class="mt-3"><i class="fa fa-map-marker text-danger" aria-hidden="true"></i> KK 15 RD</li>
                 <li class="mt-3"><i class="fa fa-home text-primary" aria-hidden="true"></i> SANGWA PLAZA</li>
-                
+
               </ul>
-              
+
             </div>
           </div>
           <div class="col-md-6">
             <div class="right-image" id="map" style="height: 400px;">
-              
+
             </div>
           </div>
         </div>
       </div>
     </div>
-    
+
     <section class="footer bg-primary mt-3">
       <div class="container bg-primary shadow">
         <div class="footer__content bg-prymary">
@@ -270,7 +261,7 @@ ul.bus__list li {
             <h4 class="text-light">Get us through our socialmedia</h4>
           </div>
           <p class="mb-0 text-light">copylight © 2023 EmpowerAfrica Now Ltd</p>
-     
+
           <ul class="social__media text-white">
             <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
             <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
@@ -281,40 +272,41 @@ ul.bus__list li {
         </div>
       </div>
     </section>
-  
-  
+
+
+
     <!-- Bootstrap core JavaScript -->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  
-  
+
+
+
     <!-- Additional Scripts -->
     <script src="assets/js/custom.js"></script>
     <script src="assets/js/owl.js"></script>
     <script src="assets/js/slick.js"></script>
     <script src="assets/js/isotope.js"></script>
     <script src="assets/js/accordions.js"></script>
-  
-  
-    <script language = "text/Javascript"> 
-      cleared[0] = cleared[1] = cleared[2] = 0; //set a cleared flag for each field
-      function clearField(t){                   //declaring the array outside of the
-      if(! cleared[t.id]){                      // function makes it static and global
-          cleared[t.id] = 1;  // you could use true and false, but that's more typing
-          t.value='';         // with more chance of typos
+
+
+
+    <script language = "text/Javascript">
+      cleared[0] = cleared[1] = cleared[2] = 0;
+      function clearField(t){
+      if(! cleared[t.id]){
+          cleared[t.id] = 1;
+          t.value='';
           t.style.color='#fff';
           }
       }
     </script>
-    {{-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCNGNf-_xZtojxLuBctw3sGOw6bWT4Lvsc&callback=initMap" 
-    async defer></script> --}}
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCNGNf-_xZtojxLuBctw3sGOw6bWT4Lvsc&callback=initMap" async defer></script>
     <script>
       function initMap() {
           var kicukiroCenter = { lat: -1.98035, lng: 30.10775 };
           var map = new google.maps.Map(document.getElementById('map'), {
               center: kicukiroCenter,
-              zoom: 12  
+              zoom: 12
           });
           var marker = new google.maps.Marker({
               position: kicukiroCenter,
@@ -323,15 +315,6 @@ ul.bus__list li {
           });
       }
   </script>
-
-    
-
-
-
-
-    
-
-
   </body>
 
 </html>
