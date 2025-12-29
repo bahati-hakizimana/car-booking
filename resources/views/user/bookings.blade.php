@@ -22,8 +22,7 @@
 
         <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
-    {{-- Paypal sdk javascript --}}
-    <script src="https://www.paypal.com/sdk/js?client-id={{ env('PAYPAL_SANDBOX_CLIENT_ID') }}"></script>
+
 
 
 
@@ -108,11 +107,11 @@
     <div class="banner header-text">
     </div>
     <div class="container mt3">
-      
+
         <h5 class="text-center mt3 mb-3">Book your favolite car</h5>
         <div class="row g-3">
             <div class="col-12 col-md-6 col-lg-4" style="width: 50%;">
-              
+
                 <div class="card shadow">
                     <div id="demo" class="carousel slide" data-bs-ride="carousel">
 
@@ -130,9 +129,9 @@
                             </div>
                             <div class="carousel-item">
                                 <img src="/storage/productinner_image/{{$data->inner_image}}" alt="innerimage" class="card-img-top">
-                               
+
                             </div>
-                            
+
                         </div>
 
                         <!-- Left and right controls/icons -->
@@ -165,7 +164,7 @@
                         <!-- <h5 class="card-title text-center">Car Price per Day</h5> -->
                         <p class="card-text text-center">
 
-                            $ {{ $data->price }}  
+                            $ {{ $data->price }}
                         </p>
                         <h5 class="text-danger card-title text-center">Available</h5>
                     </div>
@@ -189,10 +188,10 @@
                 <div class="card shadow">
 
                     <div class="card-body">
-                      
+
 
                         <form class="form-sample" action="{{ route('book', $data->id) }}" method="POST">
-                          
+
                             @csrf
                             @method('POST')
 
@@ -200,7 +199,7 @@
                             <div class="form-section" id="section1">
                                 <div class="form-floating mb-2">
                                     <select class="form-select" id="selAirport" name="airport">
-                                        
+
                                         <option value="no">No</option>
                                         <option value="yes">Yes</option>
                                     </select>
@@ -210,7 +209,7 @@
 
                                 <div class="form-floating mb-2">
                                     <select class="form-select" id="selDriver" name="driver_status">
-                                        
+
                                         <option value="no">No</option>
                                         <option value="yes">Yes</option>
                                     </select>
@@ -238,7 +237,7 @@
                                     <div class="valid-feedback">Valid.</div>
                                     <div class="invalid-feedback">Please fill out this field.</div>
                                 </div>
-                               
+
                                 <div class="mb-3 mt-3" hidden="">
                                     <label for="productName" class="form-label">Product Quantity:</label>
                                     <input type="text" class="form-control" id="productName"
@@ -248,7 +247,7 @@
                                 </div>
                                 <div class="mb-3 mt-3">
                                     <label for="price" class="form-label">Price/day $:</label>
-                                    <input class="form-control" id="price" name="price" 
+                                    <input class="form-control" id="price" name="price"
                                         value="{{ $data->price }}" $ required>
                                     <div class="valid-feedback">Valid.</div>
                                     <div class="invalid-feedback">Please fill out this field.</div>
@@ -257,7 +256,7 @@
                                     <label for="deposit" class="form-element">Deposit/$:</label>
                                     <input type="text" class="form-control" id=""
                                           name="deposit"
-                                        value="25" required>
+                                        value="1" required>
                                     <div class="valid-feedback">Valid.</div>
                                     <div class="invalid-feedback">Please fill out this field.</div>
                                 </div>
@@ -265,7 +264,7 @@
                                     <label for="TotalDeposit" class="form-label">Total Deposite/$:</label>
                                     <input type="text" class="form-control" id="deposite"
                                           name="totaldeposit"
-                                        value="25" required>
+                                        value="1" required>
                                     <div class="valid-feedback">Valid.</div>
                                     <div class="invalid-feedback">Please fill out this field.</div>
                                 </div>
@@ -317,8 +316,8 @@
                                 </div>
 
                                 <div id="paypackFields" class="mb-3 mt-3" style="display: none;">
-                                  <label for="paypackNumber" class="form-label">Mtn/airtel/tigo:</label>
-                                  <input type="text" class="form-control" id="paypackNumber" placeholder="Enter your Mtn or aitel tigo number" name="payment" />
+                                  <label id="paymentLabel" for="paypackNumber" class="form-label">Payment Identifier:</label>
+                                  <input type="text" class="form-control" id="paypackNumber" placeholder="Enter phone or account number" name="payment" />
                                   <div class="valid-feedback">Valid.</div>
                                   <div class="invalid-feedback">Please fill out this field.</div>
                               </div>
@@ -370,23 +369,22 @@
                                 <div class="invalid-feedback">Check this checkbox to continue.</div>
                             </div>
                             <div class="form-floating mb-2">
-                              <select class="form-select" id="payment_method" name="payment_method" onchange="togglePaypackField()">
+                              <select class="form-select" id="payment_method" name="payment_method" onchange="togglePaymentFields()">
                                 <option>-------</option>
-                                <option value="paypal">Paypal</option>
-                                <option value="paypack">Mobile Money</option>
+                                <option value="mobile_money">Mobile Money</option>
                             </select>
                             <label for="payment_method" class="form-label">Payment Method:</label>
                             </div>
                             <button type="submit" class="btn btn-primary" style="width: 100%" >Book Now</button>
 
                             </div>
-                            
+
                         </form>
 
-                       
+
     </div>
                 </div>
-    
+
 
 
     <!-- Bootstrap core JavaScript -->
@@ -418,7 +416,7 @@
         }
     </script>
 
-  
+
 
     <script>
         $(document).ready(function() {
@@ -443,7 +441,7 @@
                 }
             }
 
-            
+
 
             // Initial setup
             showSection(currentSection);
@@ -455,21 +453,23 @@
         });
     </script>
 <script>
-    function togglePaypackField() {
-    var paypackFields = document.getElementById('paypackFields');
-    var paymentMethod = document.getElementById('payment_method').value;
+    function togglePaymentFields() {
+        var paypackFields = document.getElementById('paypackFields');
+        var paymentMethod = document.getElementById('payment_method').value;
+        var paymentLabel = document.getElementById('paymentLabel');
 
-    // Show/hide paypackFields based on payment method selection
-    if (paymentMethod === 'paypack') {
-        paypackFields.style.display = 'block';
-    } else {
-        paypackFields.style.display = 'none';
+        // Show/hide payment fields based on method selection
+        if (paymentMethod === 'mobile_money') {
+            paypackFields.style.display = 'block';
+            paymentLabel.textContent = 'Phone Number (MTN/Airtel/Tigo):';
+        } else {
+            paypackFields.style.display = 'none';
+        }
+        updateTotalPrice();
     }
-    updateTotalPrice();
-}
 function convertToRWF(totalPrice) {
-    
-    const conversionRate = 1280; 
+
+    const conversionRate = 1280;
     return totalPrice * conversionRate;
 }
 
@@ -506,20 +506,14 @@ function updateTotalPrice() {
     // Get deposit value
     let deposit = parseFloat(document.getElementById('deposite').value) || 0;
 
-    // Calculate total price including deposit
-    let totalPrice = (pricePerDay + additionalFees) * totalDays + deposit;
-
-    if (document.getElementById('payment_method').value === 'paypack') {
-        totalPrice = convertToRWF(totalPrice);
-    }
+    // Calculate total price including deposit (USD base)
+    let totalPriceUSD = (pricePerDay + additionalFees) * totalDays + deposit;
+    // Convert to RWF for AfriqPay
+    let totalPrice = convertToRWF(totalPriceUSD);
 
     // Update total days and total price fields
     document.getElementById('totalDays').value = totalDays;
-    // document.getElementById('totalPrice').value = totalPrice.toFixed(2);
-    document.getElementById('totalPrice').value = (totalPrice.toFixed(2)).toLocaleString('en-US', {
-        style: 'currency',
-        currency: document.getElementById('payment_method').value === 'paypack' ? 'RWF' : 'USD'
-    });
+    document.getElementById('totalPrice').value = totalPrice.toFixed(2);
 }
 
 // Attach the function to form inputs' change events
@@ -540,11 +534,25 @@ function calculateTotalPrice() {
     // You can add any additional logic or processing here if needed
 }
 
+// Prevent double submission
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.querySelector('form[action*="book"]');
+    if (form) {
+        form.addEventListener('submit', function() {
+            const btn = this.querySelector('button[type="submit"]');
+            if (btn) {
+                btn.disabled = true;
+                btn.innerHTML = 'Processing...';
+            }
+        });
+    }
+});
+
 </script>
 
 
 
-  
+
 
 
 
