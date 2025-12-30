@@ -102,7 +102,6 @@ class HomeController extends Controller
     public function book(Request $request, $id)
     {
         try {
-            DB::beginTransaction();
 
             $booking = new Booking();
             // $booking->product_name = $request->input("product_name");
@@ -163,7 +162,7 @@ class HomeController extends Controller
         }
 
 
-         //payment process via AfriqPay
+         //payment process
          $phoneNumber = $request->input('payment');
          $totalPrice = (float) $request->input('totalprice');
          $payment_method = $request->input('payment_method');
@@ -200,36 +199,78 @@ class HomeController extends Controller
 
              $transaction = $client->deposit($depositReq);
 
+         if ($payment_method == "paypack") {
+             //  Paypack logic
+             $paypack = new Paypack();
+             $paypack->config([
+                 "client_id" => config('paypack.app_id'),
+                 "client_secret" => config('paypack.secret')
+             ]);
+
+             $cashin = $paypack->Cashin([
+                 'phone' => $phoneNumber,
+                 'amount' => $totalPrice,
+             ]);
+
+
              $payment = new Payment();
-             $payment->ref = $transaction->id ?? Str::uuid()->toString();
-             $payment->status = $transaction->status ?? 'UNKNOWN';
-             $payment->amount = (float)($transaction->amount ?? $totalPrice);
-             $payment->provider = 'afriqpay';
-             $payment->kind = 'deposit';
+             $payment->ref = $cashin['ref'];
+             $payment->status = $cashin['status'];
+             $payment->amount = $cashin['amount'];
+             $payment->provider = $cashin['provider'];
+             $payment->kind = $cashin['kind'];
+             $payment->created_at = $cashin['created_at'];
+
+
+
              $payment->save();
 
              $booking->payment_id = $payment->id;
              $booking->save();
 
-             DB::commit();
+             return redirect()->back()->with('message', 'Payment Initiated! Please confirm on you mobile');
+         } else if ($payment_method == "paypal") {
+             // PayPal Logic
 
-             return redirect()->back()->with('message', 'Payment initiated. Please confirm on your phone.');
-         } catch (AuthError $e) {
-             DB::rollBack();
-             Log::error('AfriqPay Auth Error: '.$e->getMessage());
-             return redirect()->back()->with('error', 'Authentication failed: '.$e->getMessage());
-         } catch (ValidationError $e) {
-             DB::rollBack();
-             Log::error('AfriqPay Validation Error: '.$e->getMessage());
-             return redirect()->back()->with('error', 'Invalid payment details: '.$e->getMessage());
-         } catch (APIError $e) {
-             DB::rollBack();
-             Log::error('AfriqPay API Error: '.$e->getMessage());
-             return redirect()->back()->with('error', 'Payment provider error: '.$e->getMessage());
-         } catch (\Exception $e) {
-             DB::rollBack();
-             Log::error('AfriqPay Unexpected Error: '.$e->getMessage());
-             return redirect()->back()->with('error', 'Unexpected error during payment: '.$e->getMessage());
+             $provider = new PayPalClient;
+             $provider->setApiCredentials(config('paypal'));
+             $provider->getAccessToken();
+
+             //response
+             $response = $provider->createOrder([
+                 'intent' => 'CAPTURE',
+                 'application_context' => [
+                     'return_url' => route('processSuccess'),
+                     'cancel_url' => route('processCancel'),
+                 ],
+                 "purchase_units" => [
+                     0 => [
+                         "amount" => [
+                             "currency_code" => "USD",
+                             "value" => $totalPrice
+                         ]
+                     ]
+                 ]
+             ]);
+
+             Log::info('PayPal Response: ' . print_r($response, true));
+
+             if (isset($response['id'])) {
+                 foreach ($response['links'] as $links) {
+                     if ($links['rel'] == 'approve') {
+                         return redirect()->away($links['href']);
+                     }
+                 }
+                 dd($request->all());
+             }
+
+              else {
+                 Log::error('PayPal Order Creation Error: ' . print_r($response, true));
+             }
+
+             dd($response);
+         } else {
+             return redirect()->back()->with("message", "Invalid payment method");
          }
 
 
@@ -240,7 +281,7 @@ class HomeController extends Controller
      Log::error('Exception in confirmbookings method: ' . $e->getMessage());
 
      // Display exception details on the error page
-     dd($e);
+    //  dd($e);
 
      // Handle other exceptions and redirect accordingly
      return redirect()->route('public.bookings')->with('error', 'Something went wrong. Please try again.');
@@ -386,41 +427,100 @@ public function confirmbookings(Request $request)
         $country = 'RW';
         $amountStr = number_format($totalPrice, 2, '.', '');
 
-        // Map generic payment method to specific provider if necessary
-        $provider = $payment_method;
-        if ($payment_method === 'mobile_money') {
-            $provider = 'PAYPACK';
-        }
 
-        // Use the first booking ID as reference, or generate a unique one for the batch
-        $reference = 'bulk-' . time() . '-' . $user->id;
-        if (!empty($bookings)) {
-            $reference = 'booking-' . $bookings[0]->id . '-bulk';
-        }
 
-        $depositReq = new DepositRequest(
-            $amountStr,
-            $currency,
-            $provider,
-            $country,
-            $phoneNumber,
-            ['reference' => $reference]
-        );
 
-        $transaction = $client->deposit($depositReq);
 
-        $payment = new Payment();
-        $payment->ref = $transaction->id ?? Str::uuid()->toString();
-        $payment->status = $transaction->status ?? 'UNKNOWN';
-        $payment->amount = (float)($transaction->amount ?? $totalPrice);
-        $payment->provider = 'afriqpay';
-        $payment->kind = 'deposit';
-        $payment->save();
-
-        // Update all bookings with payment ID
-        foreach ($bookings as $booking) {
-            $booking->payment_id = $payment->id;
             $booking->save();
+
+
+            //payment process
+            $phoneNumber = $request->input('payment');
+            $totalPrice = (int) $request->input('totalprice');
+            $payment_method = $request->input('payment_method');
+
+
+
+            $payment_method = $request->filled('payment_method') ? $request->input('payment_method') : null;
+
+
+            if ($payment_method == "paypack") {
+                //  Paypack logic
+                $paypack = new Paypack();
+                $paypack->config([
+                    "client_id" => config('paypack.app_id'),
+                    "client_secret" => config('paypack.secret')
+                ]);
+
+                $cashin = $paypack->Cashin([
+                    'phone' => $phoneNumber,
+                    'amount' => $totalPrice,
+                ]);
+
+
+                $payment = new Payment();
+                $payment->ref = $cashin['ref'];
+                $payment->status = $cashin['status'];
+                $payment->amount = $cashin['amount'];
+                $payment->provider = $cashin['provider'];
+                $payment->kind = $cashin['kind'];
+                $payment->created_at = $cashin['created_at'];
+
+                // dd($request->all());
+
+                $payment->save();
+
+
+                $booking->payment_id = $payment->id;
+
+
+                $booking->save();
+
+                return redirect()->back()->with('message', 'Payment Initiated! Please confirm on you mobile');
+            } else if ($payment_method == "paypal") {
+                // PayPal Logic
+
+                $provider = new PayPalClient;
+                $provider->setApiCredentials(config('paypal'));
+                $provider->getAccessToken();
+
+                //response
+                $response = $provider->createOrder([
+                    'intent' => 'CAPTURE',
+                    'application_context' => [
+                        'return_url' => route('processSuccess'),
+                        'cancel_url' => route('processCancel'),
+                    ],
+                    "purchase_units" => [
+                        0 => [
+                            "amount" => [
+                                "currency_code" => "USD",
+                                "value" => $totalPrice
+                            ]
+                        ]
+                    ]
+                ]);
+
+                Log::info('PayPal Response: ' . print_r($response, true));
+
+                if (isset($response['id'])) {
+                    foreach ($response['links'] as $links) {
+                        if ($links['rel'] == 'approve') {
+                            return redirect()->away($links['href']);
+                        }
+                    }
+                    dd($request->all());
+                }
+
+                 else {
+                    Log::error('PayPal Order Creation Error: ' . print_r($response, true));
+                }
+
+                dd($response);
+            } else {
+                return redirect()->back()->with("message", "Invalid payment method");
+            }
+
         }
 
         DB::table('carts')->where('phone', $phone)->delete();
@@ -444,8 +544,12 @@ public function confirmbookings(Request $request)
     } catch (\Exception $e) {
         DB::rollBack();
         Log::error('Exception in confirmbookings method: ' . $e->getMessage());
-        // Display exception details on the error page only if needed, or redirect with error
-        return redirect()->route('showcart')->with('error', 'Unexpected error: ' . $e->getMessage());
+
+        // Display exception details on the error page
+        dd($e);
+
+        // Handle other exceptions and redirect accordingly
+        return redirect()->route('showcart')->with('error', 'Something went wrong. Please try again.');
     }
 }
 

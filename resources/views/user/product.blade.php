@@ -9,12 +9,12 @@
           <form action="{{Route('search')}}" method="" class="form-inline mb-3" style="float: right; padding:10px;">
             @csrf
             <input class="form-control" type="search" name="search" placeholder="search product">
-            <input type="submit" value="search" class="btn btn-primary bg-primary "> 
+            <input type="submit" value="search" class="btn btn-primary bg-primary ">
           </form>
         </div>
       </div>
-      
-    
+
+
       @foreach($data as $product)
       <div class="col-md-4">
         <div class="product-item shadow">
@@ -25,7 +25,7 @@
             <a class="btn btn-primary" href="{{url('bookings',$product->id)}}">Book Now</a>
             {{-- <form action="{{route('addcart',$product->id)}}" method="POST" class="mt-2">
               @csrf
-              <input type="number" name="quantity" class="mt-2 form-control" 
+              <input type="number" name="quantity" class="mt-2 form-control"
               value="1" min="1" style="width: 100px;">
               <br>
               <input class="btn btn-dark bg-dark"  type="submit" value="Add cart">
@@ -44,8 +44,8 @@
       </div>
 
       @endif
-      
-     
+
+
     </div>
   </div>
 </div>
@@ -61,15 +61,11 @@
       <div class="col-md-6">
         <div class="left-content">
           <h4>Looking for the best servises?</h4>
-          <p><a rel="nofollow" href="#" target="_parent">Empower Africa</a> vist our Websit for more information.</p>
-          <ul class="featured-list">
-            <li><a href="#">We provide Pharmacy Services</a></li>
-            <li><a href="#">Business advertising</a></li>
-            <li><a href="#">Real Estate</a></li>
-            <li><a href="#">Pharmacy</a></li>
-            <li><a href="#">Consulting</a></li>
-          </ul>
-          
+          <p><a rel="nofollow" href="https://www.empowerafricanow.com/" target="_blank">Empower Africa</a> vist our Websit for more information.</p>
+          <p  class="text-justify">"Your journey deserves excellence, and we're here to deliver it. We provide premium, meticulously maintained vehicles for every road ahead whether you're traveling for business, leisure, or adventure.
+From effortless booking to smooth, refined rides, we've designed every detail with you in mind. Our diverse fleet features the latest models, each carefully inspected to ensure you drive with confidence and peace of mind.
+We deliver more than a car rental we offer a travel experience defined by comfort, reliability, and exceptional service. With flexible options, transparent pricing, and dedicated support, we transform your rental into an elevated experience that complements your travels perfectly."</p>
+
         </div>
       </div>
       <div class="col-md-6">
@@ -103,5 +99,4 @@
 </div> --}}
 {{-- @endsection --}}
 
-  
-  
+
