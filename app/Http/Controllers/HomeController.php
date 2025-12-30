@@ -11,21 +11,17 @@ use App\Models\User;
 use App\Models\Cart;
 use App\Models\Product;
 use App\Models\Booking;
-use Paypack\Paypack;
 use App\Models\Payment;
 use Exception;
-use PayPal\Rest\ApiContext;
-use PayPal\Auth\OAuthTokenCredential;
-use PayPal\Api\Amount;
-use PayPal\Api\Payer;
-use PayPal\Api\Payment as PayPalPayment;
-use PayPal\Api\RedirectUrls;
-use PayPal\Api\Transaction;
 use Illuminate\Support\Facades\Log;
-use Srmklive\PayPal\Services\PayPal as PayPalClient;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Str;
 use Illuminate\Support\Carbon;
+use Pasis\SDK\Client;
+use Pasis\SDK\DepositRequest;
+use Pasis\SDK\APIError;
+use Pasis\SDK\AuthError;
+use Pasis\SDK\ValidationError;
 
 class HomeController extends Controller
 {
@@ -161,19 +157,47 @@ class HomeController extends Controller
             $product->save();
         } else {
             // Handle the case where the car (product) is not found
+            DB::rollBack();
             return redirect()->back()->with('error', 'Car not found for booking.');
         }
 
 
          //payment process
          $phoneNumber = $request->input('payment');
-         $totalPrice = (int) $request->input('totalprice');
+         $totalPrice = (float) $request->input('totalprice');
          $payment_method = $request->input('payment_method');
-
-
 
          $payment_method = $request->filled('payment_method') ? $request->input('payment_method') : null;
 
+         if (!in_array($payment_method, ['mobile_money'])) {
+             DB::rollBack();
+             return redirect()->back()->with("error", "Invalid payment method");
+         }
+
+         try {
+             $client = app(Client::class);
+             $currency = 'RWF';
+             $country = 'RW';
+             $amountStr = number_format($totalPrice, 2, '.', '');
+
+             // Map generic payment method to specific provider if necessary
+             $provider = $payment_method;
+             if ($payment_method === 'mobile_money') {
+                $provider = 'PAYPACK';
+            }
+
+             // NOTE: Using DepositRequest object as required by installed SDK version (dev-main 3aa80fdf).
+             // If updated to a version supporting array input, this should be changed.
+             $depositReq = new DepositRequest(
+                 $amountStr,
+                 $currency,
+                 $provider,
+                 $country,
+                 $phoneNumber,
+                 ['reference' => 'booking-'.$booking->id]
+             );
+
+             $transaction = $client->deposit($depositReq);
 
          if ($payment_method == "paypack") {
              //  Paypack logic
@@ -201,10 +225,7 @@ class HomeController extends Controller
 
              $payment->save();
 
-
              $booking->payment_id = $payment->id;
-
-            //  dd($request->all());
              $booking->save();
 
              return redirect()->back()->with('message', 'Payment Initiated! Please confirm on you mobile');
@@ -269,29 +290,14 @@ class HomeController extends Controller
 
 
 
-    // processSuccess
-
+    // Deprecated PayPal endpoints (no-op)
     public function processSuccess(Request $request)
     {
-        $provider = new PayPalClient;
-        $provider->setApiCredentials(config('paypal'));
-        $provider->getAccessToken();
-        $response = $provider->capturePaymentOrder($request['token']);
-
-        if (isset($response['status']) && $response['status'] == 'COMPLETED') {
-            return redirect()->route('public.bookings')->with('success', 'Transaction cpmplete.');
-        } else {
-            return redirect()
-                ->route('public.bookings')
-                ->with('error', $response['message'] ?? 'sommething went wrong.');
-        }
+        return redirect()->route('public.bookings')->with('message', 'This endpoint is deprecated.');
     }
-    // process cancel
     public function processCancel(Request $request)
     {
-        return redirect()
-            ->route('public.bookings')
-            ->with('error', $response['message'] ?? 'You Canceled the transaction.');
+        return redirect()->route('public.bookings')->with('message', 'This endpoint is deprecated.');
     }
 
     //search Product
@@ -371,7 +377,20 @@ public function confirmbookings(Request $request)
     $email = $user->email;
     $phone = $user->phone;
 
+    // Validate payment inputs
+    $phoneNumber = $request->input('payment') ?: $phone;
+    $totalPrice = (float) $request->input('totalprice');
+    $payment_method = $request->filled('payment_method') ? $request->input('payment_method') : null;
+
+    if (!in_array($payment_method, ['mobile_money'])) {
+        return redirect()->back()->with("error", "Invalid payment method");
+    }
+
+    DB::beginTransaction();
+
     try {
+        $bookings = [];
+        // Create bookings first (but they will be rolled back if payment fails)
         foreach ($request->productname as $key => $productname) {
             $booking = new Booking;
             $booking->product_id = $request->productid[$key];
@@ -386,10 +405,10 @@ public function confirmbookings(Request $request)
             $booking->totaldeposit = $request->input('totaldeposit');
             $booking->airport = $request->input('airport');
             $booking->destination = $request->input('destination');
-            $booking->total_price = $request->input('totalprice');
+            $booking->total_price = $request->input('totalprice'); // Note: This stores total cart price on each booking?
             $booking->driver_status = $request->input('driver');
             $booking->terms_condition = $request->input('terms_condition');
-            $booking->payment_method = $request->input('payment_method');
+            $booking->payment_method = $payment_method;
 
             $booking->first_name = $first_name;
             $booking->last_name = $last_name;
@@ -398,6 +417,15 @@ public function confirmbookings(Request $request)
 
             $booking->status = 'not delivered';
 
+            $booking->save();
+            $bookings[] = $booking;
+        }
+
+        // ONE Payment for the entire cart
+        $client = app(Client::class);
+        $currency = 'RWF';
+        $country = 'RW';
+        $amountStr = number_format($totalPrice, 2, '.', '');
 
 
 
@@ -494,10 +522,27 @@ public function confirmbookings(Request $request)
             }
 
         }
+
         DB::table('carts')->where('phone', $phone)->delete();
-        return redirect()->back()->with('message', 'Car booking confirmed successfully');
-     }   catch (\Exception $e) {
-        // Log the exception
+
+        DB::commit();
+
+        return redirect()->back()->with('message', 'Payment initiated. Please confirm on your phone.');
+
+    } catch (AuthError $e) {
+        DB::rollBack();
+        Log::error('AfriqPay Auth Error: '.$e->getMessage());
+        return redirect()->back()->with('error', 'Authentication failed: '.$e->getMessage());
+    } catch (ValidationError $e) {
+        DB::rollBack();
+        Log::error('AfriqPay Validation Error: '.$e->getMessage());
+        return redirect()->back()->with('error', 'Invalid payment details: '.$e->getMessage());
+    } catch (APIError $e) {
+        DB::rollBack();
+        Log::error('AfriqPay API Error: '.$e->getMessage());
+        return redirect()->back()->with('error', 'Payment provider error: '.$e->getMessage());
+    } catch (\Exception $e) {
+        DB::rollBack();
         Log::error('Exception in confirmbookings method: ' . $e->getMessage());
 
         // Display exception details on the error page
@@ -506,7 +551,6 @@ public function confirmbookings(Request $request)
         // Handle other exceptions and redirect accordingly
         return redirect()->route('showcart')->with('error', 'Something went wrong. Please try again.');
     }
-
 }
 
 

@@ -22,8 +22,7 @@
 
         <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
-    {{-- Paypal sdk javascript --}}
-    <script src="https://www.paypal.com/sdk/js?client-id={{ env('PAYPAL_SANDBOX_CLIENT_ID') }}"></script>
+
 
 
 
@@ -317,8 +316,8 @@
                                 </div>
 
                                 <div id="paypackFields" class="mb-3 mt-3" style="display: none;">
-                                  <label for="paypackNumber" class="form-label">Mtn/airtel/tigo:</label>
-                                  <input type="text" class="form-control" id="paypackNumber" placeholder="Enter your Mtn or aitel tigo number" name="payment" />
+                                  <label id="paymentLabel" for="paypackNumber" class="form-label">Payment Identifier:</label>
+                                  <input type="text" class="form-control" id="paypackNumber" placeholder="Enter phone or account number" name="payment" />
                                   <div class="valid-feedback">Valid.</div>
                                   <div class="invalid-feedback">Please fill out this field.</div>
                               </div>
@@ -370,10 +369,9 @@
                                 <div class="invalid-feedback">Check this checkbox to continue.</div>
                             </div>
                             <div class="form-floating mb-2">
-                              <select class="form-select" id="payment_method" name="payment_method" onchange="togglePaypackField()">
+                              <select class="form-select" id="payment_method" name="payment_method" onchange="togglePaymentFields()">
                                 <option>-------</option>
-                                <option value="paypal">Paypal</option>
-                                <option value="paypack">Mobile Money</option>
+                                <option value="mobile_money">Mobile Money</option>
                             </select>
                             <label for="payment_method" class="form-label">Payment Method:</label>
                             </div>
@@ -455,18 +453,20 @@
         });
     </script>
 <script>
-    function togglePaypackField() {
-    var paypackFields = document.getElementById('paypackFields');
-    var paymentMethod = document.getElementById('payment_method').value;
+    function togglePaymentFields() {
+        var paypackFields = document.getElementById('paypackFields');
+        var paymentMethod = document.getElementById('payment_method').value;
+        var paymentLabel = document.getElementById('paymentLabel');
 
-    // Show/hide paypackFields based on payment method selection
-    if (paymentMethod === 'paypack') {
-        paypackFields.style.display = 'block';
-    } else {
-        paypackFields.style.display = 'none';
+        // Show/hide payment fields based on method selection
+        if (paymentMethod === 'mobile_money') {
+            paypackFields.style.display = 'block';
+            paymentLabel.textContent = 'Phone Number (MTN/Airtel/Tigo):';
+        } else {
+            paypackFields.style.display = 'none';
+        }
+        updateTotalPrice();
     }
-    updateTotalPrice();
-}
 function convertToRWF(totalPrice) {
 
     const conversionRate = 1280;
@@ -506,20 +506,14 @@ function updateTotalPrice() {
     // Get deposit value
     let deposit = parseFloat(document.getElementById('deposite').value) || 0;
 
-    // Calculate total price including deposit
-    let totalPrice = (pricePerDay + additionalFees) * totalDays + deposit;
-
-    if (document.getElementById('payment_method').value === 'paypack') {
-        totalPrice = convertToRWF(totalPrice);
-    }
+    // Calculate total price including deposit (USD base)
+    let totalPriceUSD = (pricePerDay + additionalFees) * totalDays + deposit;
+    // Convert to RWF for AfriqPay
+    let totalPrice = convertToRWF(totalPriceUSD);
 
     // Update total days and total price fields
     document.getElementById('totalDays').value = totalDays;
-    // document.getElementById('totalPrice').value = totalPrice.toFixed(2);
-    document.getElementById('totalPrice').value = (totalPrice.toFixed(2)).toLocaleString('en-US', {
-        style: 'currency',
-        currency: document.getElementById('payment_method').value === 'paypack' ? 'RWF' : 'USD'
-    });
+    document.getElementById('totalPrice').value = totalPrice.toFixed(2);
 }
 
 // Attach the function to form inputs' change events
@@ -539,6 +533,20 @@ function calculateTotalPrice() {
     updateTotalPrice();
     // You can add any additional logic or processing here if needed
 }
+
+// Prevent double submission
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.querySelector('form[action*="book"]');
+    if (form) {
+        form.addEventListener('submit', function() {
+            const btn = this.querySelector('button[type="submit"]');
+            if (btn) {
+                btn.disabled = true;
+                btn.innerHTML = 'Processing...';
+            }
+        });
+    }
+});
 
 </script>
 

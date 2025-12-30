@@ -159,14 +159,14 @@
                                         <tr class=" text-dark">
                                             <td style="padding: 10px;font-size:20px">
                                                 <input type="text" name="productname[]"
-                                                    value=" 
+                                                    value="
                                                    {{ $carts->product_name }}"
                                                     hidden="">
                                                 {{ $carts->product_name }}
                                             </td>
                                             <td style="padding: 10px;font-size:20px">
                                                 <input type="text" name="productid[]"
-                                                    value=" 
+                                                    value="
                                               {{ $carts->product_id }}"
                                                     hidden="">
                                                 {{ $carts->product_id }}
@@ -180,7 +180,7 @@
                                             </td>
                                             <td style="padding: 10px;font-size:20px">
                                                 <input type="text" id="price" name="price[]"
-                                                    value=" 
+                                                    value="
                                                          {{ $carts->price }}"
                                                     hidden="">
                                                 {{ $carts->price }}
@@ -246,12 +246,6 @@
                     <label>Total Price</label>
                     <input style="width: 600px;border: none;border-bottom: 1px solid gray;" type="number"
                         id="totalPrice" name="totalprice" class="form-control" value="">
-                </div>
-                <div id="mobilemoneyFields" class=" mt-3" style="display: none;">
-                    <label for="paypackNumber" class="form-label">Mtn/airtel/tigo:</label>
-                    <input type="number" class="form-control" id="paypackNumber" placeholder="Enter your Mtn or aitel tigo number" name="payment" style="width: 600px;border: none;border-bottom: 1px solid gray;" />
-                    <div class="valid-feedback">Valid.</div>
-                    <div class="invalid-feedback">Please fill out this field.</div>
                 </div>
                 {{-- <div class="mobilemoney mt-1" id="mobilemoneyFields" style=" display: none;">
                     <input type="number" class="form-control" name="mobilemoney" id="mobilemoney" placeholder="Enter Mtn or airtel number to pay" required style="width: 600px;">
@@ -328,11 +322,16 @@
 
 
                                  <option>select .......</option>
-                                <option value="paypack">mobilemoney</option>
-                                <option value="paypal">Paypal</option>
+                                <option value="mobile_money">Mobile Money</option>
+                                <option value="bank_transfer">Bank Account</option>
                                    
                             </select>
 
+                        </div>
+
+                        <div id="mobilemoneyFields" class="form-group mt-3" style="display: none;">
+                             <label for="paypackNumber" class="form-label">Phone Number (MTN/Airtel/Tigo):</label>
+                             <input type="text" class="form-control" id="paypackNumber" style="width: 600px;border: none;border-bottom: 1px solid gray;" placeholder="Enter phone or account number" name="payment" />
                         </div>
                         
 
@@ -391,7 +390,7 @@
             t.value = '';
             t.style.color = '#fff';
         }
-        
+
     </script>
 
 
@@ -399,14 +398,34 @@
     function togglePaymentField() {
       var mobileFields = document.getElementById('mobilemoneyFields');
       var paymentMethod = document.getElementById('payment_method').value;
+      var paymentLabel = document.querySelector('label[for="paypackNumber"]');
 
-      // Show/hide paypackFields based on payment method selection
-      if (paymentMethod === 'paypack') {
-          mobilemoneyFields.style.display = 'block';
+      // Show/hide fields based on payment method selection
+      if (paymentMethod === 'mobile_money' || paymentMethod === 'bank_transfer') {
+          mobileFields.style.display = 'block';
+          if(paymentMethod === 'mobile_money') {
+              paymentLabel.textContent = 'Phone Number (MTN/Airtel/Tigo):';
+          } else {
+              paymentLabel.textContent = 'Bank Account Number:';
+          }
       } else {
-          mobilemoneyFields.style.display = 'none';
+          mobileFields.style.display = 'none';
       }
   }
+
+  // Prevent double submission
+  document.addEventListener('DOMContentLoaded', function() {
+      const form = document.querySelector('form[action*="confirmbookings"]');
+      if (form) {
+          form.addEventListener('submit', function() {
+              const btn = this.querySelector('button[type="submit"]');
+              if (btn) {
+                  btn.disabled = true;
+                  btn.innerHTML = 'Processing...';
+              }
+          });
+      }
+  });
 
 document.addEventListener("DOMContentLoaded", function() {
     const pickupDateInput = document.getElementById("pickupDate");
@@ -563,7 +582,7 @@ document.addEventListener("DOMContentLoaded", function() {
 //     // Show/hide mobileMoneyFields based on payment method selection
 //     if (paymentMethod === 'paypack') {
 //         mobileMoneyFields.style.display = 'block';
-        
+
 //         // Check if the mobilemoney input exists and is not disabled
 //         const mobileMoneyInput = document.getElementById('mobilemoney');
 //         if (mobileMoneyInput && !mobileMoneyInput.disabled) {
