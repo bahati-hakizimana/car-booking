@@ -66,7 +66,7 @@
 }
 section.footer {
   background-color: #21d4fd;
- 
+
   position: relative;
   font-family: "Poppins";
   padding: 25px 0px;
@@ -75,7 +75,7 @@ section.footer {
   padding: 25px;
   text-align: center;
   color: #fff;
-  
+
 }
 .footer__content img {
   width: 5%;
@@ -131,12 +131,12 @@ ul.social__media li {
   box-shadow: 0 2px 10px -1px rgba(0, 0, 0, 0.55),
     0 0px 20px 0px rgba(0, 0, 0, 0.55);
 }
- 
+
 ul.bus__list {
   padding: 0;
   margin: 0;
 }
- 
+
 ul.bus__list li {
   list-style-type: none;
   margin-bottom: 5px;
@@ -154,7 +154,7 @@ ul.bus__list li {
             <div></div>
             <div></div>
         </div>
-    </div>  
+    </div>
     <!-- ***** Preloader End ***** -->
 
     <!-- Header -->
@@ -162,7 +162,7 @@ ul.bus__list li {
       <nav class="navbar navbar-expand-lg">
         <div class="container">
         <a href="{{route('homepage')}}"><img class="logo" src="assets/images/logo24.png" alt="logo"></a>
-          
+
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -172,8 +172,8 @@ ul.bus__list li {
                 <a class="nav-link" href="{{route('homepage')}}">Home
                   <span class="sr-only">(current)</span>
                 </a>
-              </li> 
-              
+              </li>
+
               <li class="nav-item">
                 <a class="nav-link" href="{{url('aboutus')}}">About Us</a>
               </li>
@@ -182,20 +182,20 @@ ul.bus__list li {
               </li>
               <li class="nav-item">
               @if (Route::has('login'))
-             
+
                   @auth
 
                   <!-- <li class="nav-item">
                     <a class="nav-link" href="{{route('showcart')}}">
                       <i class="fa fa-shopping-cart" aria-hidden="true"></i>
                       Cart[{{$count}}]</a>
-                    
+
                   </li> -->
-                     
+
                         <x-app-layout>
-    
+
                         </x-app-layout>
-                       
+
                   @else
                       <li><a class="nav-link"  href="{{ route('login') }}" >Log in</a></li>
 
@@ -203,7 +203,7 @@ ul.bus__list li {
                          <li><a class="nav-link"   href="{{ route('register') }}">Register</a></li>
                       @endif -->
                   @endauth
-              
+
           @endif
 
               </li>
@@ -211,24 +211,24 @@ ul.bus__list li {
           </div>
         </div>
       </nav>
-     
+
     </header>
 
-    
+
     <!-- Banner Starts Here -->
     <div class="banner header-text mb-3">
-       
+
       </div>
-    
-  
+
+
         <div class="row mt-3">
             <div class="col-md-12">
                 <h5 class="text-center mt-4" style="font-size: 500; font-wait:bold;">Read More About Empower Africa Car Rental</h5>
                 <div class="inner-content text-center mt-4 d-flex">
-                   
+
                     <div class="product-item shadow" style="margin-right: 2rem;">
                         <img src="./assets/images/p2.jpg" width="400" height="400" alt="">
-                        
+
                     </div>
                     <div class="read-more-container">
 
@@ -253,7 +253,7 @@ ul.bus__list li {
                           </p>
                           <span class="read-more-btn text-primary">Read More...</span>
                       </div>
-              
+
                       <div class="container-para">
                         <h2 class="mb-2">Cont.....</h2>
                           <p>
@@ -273,14 +273,14 @@ ul.bus__list li {
                           </p>
                           <span class="read-more-btn text-primary">Read More...</span>
                       </div>
-              
+
                   </div>
                 </div>
-                
+
             </div>
         </div>
-   
-   
+
+
       </div>
       <section class="footer bg-primary mt-3">
       <div class="container bg-primary shadow">
@@ -289,7 +289,7 @@ ul.bus__list li {
             <h4 class="text-light">Get us through our socialmedia</h4>
           </div>
           <p class="mb-0 text-light">copylight © 2023 EmpowerAfrica Now Ltd</p>
-     
+
           <ul class="social__media text-white">
             <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
             <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
@@ -300,22 +300,22 @@ ul.bus__list li {
         </div>
       </div>
     </section>
-  
-  
+
+
     <!-- Bootstrap core JavaScript -->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  
-  
+
+
     <!-- Additional Scripts -->
     <script src="assets/js/custom.js"></script>
     <script src="assets/js/owl.js"></script>
     <script src="assets/js/slick.js"></script>
     <script src="assets/js/isotope.js"></script>
     <script src="assets/js/accordions.js"></script>
-  
-  
-    <script language = "text/Javascript"> 
+
+
+    <script language = "text/Javascript">
       cleared[0] = cleared[1] = cleared[2] = 0; //set a cleared flag for each field
       function clearField(t){                   //declaring the array outside of the
       if(! cleared[t.id]){                      // function makes it static and global
@@ -345,7 +345,7 @@ ul.bus__list li {
 })
     </script>
 
-    
+
 
 
   </body>
@@ -360,7 +360,7 @@ ul.bus__list li {
 
 
 
-            
+
 
 
 
